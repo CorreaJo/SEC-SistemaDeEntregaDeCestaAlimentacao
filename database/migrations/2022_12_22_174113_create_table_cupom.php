@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTableCupom extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -17,7 +17,7 @@ class CreateTableCupom extends Migration
             $table->id();
             $table->date('dataRetirada');
             $table->date('dataDisp');
-            $table->date('dataLimite');            
+            $table->date('dataLimite');  
             $table->string('status');
             $table->foreignId('idBeneficiado')->references('id')->on('beneficiado')->onDelete('cascade');
             $table->timestamps();
@@ -33,4 +33,4 @@ class CreateTableCupom extends Migration
     {
         Schema::dropIfExists('_table__cupom');
     }
-}
+};

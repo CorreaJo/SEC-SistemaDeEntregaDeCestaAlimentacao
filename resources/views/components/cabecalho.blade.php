@@ -6,6 +6,12 @@
         <a href="#">Item</a>
         <a href="#">Item</a>
     </div>
+    <div>
+        <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button>Sair</button>
+        </form>
+    </div>
 </header>
 
 <style>

@@ -1,25 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <title>Página Principal</title>
 </head>
 <body>
+    <x-cabecalho />
+    <h1>Consultar Cestas</h1>
     <x-pesquisar />
-
-    <div class="cabecalho">
-        <h1>Logo</h1>
-    </div>
-    <div class="login">
-        <h1>Login</h1>
-        <form action="#">
-            <input type="email" placeholder="Email">
-            <input type="password" placeholder="Senha">
-            <button>Enviar</button>
-        </form>
-    </div>
 </body>
 </html>
