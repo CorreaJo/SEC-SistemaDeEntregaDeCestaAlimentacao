@@ -1,15 +1,16 @@
 <header>
-    <h2>Logo</h2>
-    <div>
+    <x-application-logo class="w-[120px]" />
+    <div class="links">
+        @if (Auth::user()->perfil === 'admin')
+            <a href="{{route('register')}}">Registrar Funcionário</a>
+        @endif
+        
         <a href="#">Item</a>
         <a href="#">Item</a>
-        <a href="#">Item</a>
-        <a href="#">Item</a>
-    </div>
-    <div>
+        <h4>{{Auth::user()->name}}</h4>
         <form action="{{route('logout')}}" method="post">
             @csrf
-            <button>Sair</button>
+            <button><img class="sair" src="{{asset('images/sair.png')}}" alt=""></button>
         </form>
     </div>
 </header>
@@ -23,7 +24,19 @@
     header {
         display: flex;
         justify-content: space-around;
-        border-bottom: 1px solid black;
         align-items: center;
+        background-color: lightslategray;
+    }
+
+    .links {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 30vw;
+    }
+
+    .sair {
+        margin-left: 20px;
+        width: 35px;
     }
 </style>
