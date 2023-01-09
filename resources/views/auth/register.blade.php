@@ -1,11 +1,13 @@
+<head>
+    <title>Cadastrar Funcionário</title>
+</head>
+
 <x-guest-layout>
     <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-[300px] -mb-6" />
-            </a>
-        </x-slot>
-
+        <a class="flex items-center pb-3" href="{{route('index')}}">
+            <img src="{{asset('images/botao-voltar.png')}}" alt="">
+            Voltar
+        </a>
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
@@ -42,11 +44,25 @@
                 <x-label for="unidade" :value="__('Unidade')" />
 
                 <select name="unidade" id="unidade" class="w-full">
-                    <option value="" disabled selected>Selecione a unidade</option>
-                    <option value="Cras Marina Caron">Cras Marina Caron</option>
-                    <option value="Cras Regiane Félix">Cras Regiane Félix</option>
-                    <option value="Cras Padre José">Cras Padre José</option>
-                    <option value="Cras Lívia Stefany">Cras Lívia Stefany</option>
+                    @unless (Auth::user()->unidade === 'compras' || Auth::user()->unidade === 'entrega')
+                        <option value="" disabled selected>Selecione a unidade</option>
+                        <option value="Cras Marina Caron">Cras Marina Caron</option>
+                        <option value="Cras Regiane Félix">Cras Regiane Félix</option>
+                        <option value="Cras Padre José">Cras Padre José</option>
+                        <option value="Cras Lívia Stefany">Cras Lívia Stefany</option>
+                    @endunless
+                    
+                    @if (Auth::user()->unidade === 'compras')
+                        <option value="" disabled selected>Selecione a unidade</option>
+                        <option value="compras">Compras</option>
+
+                    @elseif (Auth::user()->unidade === 'entrega')
+                        <option value="" disabled selected>Selecione a unidade</option>
+                        <option value="entrega">Entrega</option>
+                    @endif
+
+                    
+                    
                 </select>
             </div>
 

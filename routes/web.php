@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
+    BeneficiadoController,
     UserController,
 };
 
@@ -22,6 +23,10 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/index', [UserController::class, 'index'])->name('index');
+    Route::get('/funcionarios', [UserController::class, 'lista'])->name('users.index');
+    Route::delete('/funcionario/{id}', [UserController::class, 'delete'])->name('users.delete');
+
+    Route::get('/beneficiado/create', [BeneficiadoController::class, 'create'])->name('beneficiado.create');
 });
 
 

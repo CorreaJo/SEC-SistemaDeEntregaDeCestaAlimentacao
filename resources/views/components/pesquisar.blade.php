@@ -13,8 +13,8 @@
     </form>
 
     <div>
-        @if (Auth::user()->perfil === 'Técnico')   
-            <a  class="cadastrar" href="#">
+        @if (Auth::user()->perfil === 'Técnico' || 'coordenador' || 'admin')   
+            <a  class="cadastrar" href="{{route('beneficiado.create')}}">
                 <img src="{{asset('images/Vectorcadastrar.png')}}" alt="">
                 <div>
                     Cadastrar Pessoa

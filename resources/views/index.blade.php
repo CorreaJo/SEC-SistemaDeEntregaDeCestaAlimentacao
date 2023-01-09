@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +10,22 @@
 </head>
 <body>
     <x-cabecalho />
-    <h1 class="text-center text-2xl font-bold mt-7">Consultar Cestas</h1>
-    <x-pesquisar />
+        
+    @unless (Auth::user()->unidade === 'compras' || Auth::user()->unidade === 'entrega')
+        <div class="flex items-center justify-center h-[70vh] flex-row">
+            <div>
+                <h1 class="text-center text-2xl font-bold">Consultar Cestas</h1>
+                <x-pesquisar />
+            </div>
+        </div>
+    @endunless
+
+    @if (Auth::user()->unidade === 'compras')
+        <h2>tem que fazer - Compras</h2>
+    @elseif (Auth::user()->unidade === 'entrega')
+        <h1 class="text-center text-2xl font-bold">Consultar Cupons</h1>
+    @endif
+    
+    
 </body>
 </html>
