@@ -25,6 +25,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/index', [UserController::class, 'index'])->name('index');
     Route::get('/funcionarios', [UserController::class, 'lista'])->name('users.index');
     Route::delete('/funcionario/{id}', [UserController::class, 'delete'])->name('users.delete');
+    Route::get('/funcionarios/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('funcionario/{id}', [UserController::class, 'update'])->name('users.update');
 
     Route::get('/beneficiado/create', [BeneficiadoController::class, 'create'])->name('beneficiado.create');
 });

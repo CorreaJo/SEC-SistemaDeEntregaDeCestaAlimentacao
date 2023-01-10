@@ -4,12 +4,10 @@
 
 <x-guest-layout>
     <x-auth-card>
-        <div class="bg-slate-400 w-full rounded-md flex pl-5 items-center">
-            <a class=" flex items-center pb-3 " href="{{route('index')}}">
-                <img src="{{asset('images/botao-voltar.png')}}" alt="">
-                <h3>Voltar</h3>
-            </a>
-        </div>
+        <a class="flex items-center pb-3" href="{{route('index')}}">
+            <img src="{{asset('images/botao-voltar.png')}}" alt="">
+            Voltar
+        </a>
 
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />

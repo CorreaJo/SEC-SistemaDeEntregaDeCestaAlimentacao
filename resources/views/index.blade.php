@@ -16,8 +16,10 @@
             <div>
                 <h1 class="text-center text-2xl font-bold">Consultar Cestas</h1>
                 <x-pesquisar />
+                
             </div>
         </div>
+        <x-cupom />
     @endunless
 
     @if (Auth::user()->unidade === 'compras')

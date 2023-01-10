@@ -17,7 +17,9 @@
                 <th scope="col" class="text-sm font-medium text-white px-6 py-4">Email</th>
                 <th scope="col" class="text-sm font-medium text-white px-6 py-4">Unidade</th>
                 <th scope="col" class="text-sm font-medium text-white px-6 py-4">Perfil</th>
-                <th scope="col" class="text-sm font-medium text-white px-6 py-4">Açoes</th>
+                @if (Auth::user()->perfil === 'Coordenador' || Auth::user()->perfil === 'admin')
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Açoes</th>
+                @endif
             </tr>
         </thead class="border-b">
         <tbody>
@@ -26,7 +28,7 @@
                 <h2 class="text-center p-6 text-2xl underline text-white bg-gray-800">Todos os Funcionários</h2>
             @else
             <tr class="bg-white border-b">
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <td class="text-sm text-gray-900 font-semibold font-light px-6 py-4 whitespace-nowrap">
                     <a href="#">{{$user->name}}</a>
                 </td> 
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
@@ -38,14 +40,17 @@
                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                     {{$user->perfil}}
                 </td>
-                <td class="flex justify-center px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    <form  class="mr-2" action="{{route('users.delete', $user->id)}}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <button class="flex items-center border rounded p-2 hover:bg-red-700 hover:text-white"><img src="{{asset('images/lixeira.png')}}" alt="">Deletar</button>
-                    </form>
-                    <a href="#" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white"><img src="{{asset('images/refrescar.png')}}" alt="">Editar</a>
-                </td>
+                @if (Auth::user()->perfil === 'Coordenador' || Auth::user()->perfil === 'admin')
+                    <td class="flex justify-center px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                        <form  class="mr-2" action="{{route('users.delete', $user->id)}}"        method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="flex items-center border rounded p-2 hover:bg-red-700 hover:text-white"><img src="{{asset('images/lixeira.png')}}" alt="">Deletar</button>
+                        </form>
+                        <a href="{{route('users.edit', $user->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white"><img src="{{asset('images/refrescar.png')}}" alt="">Editar</a>
+                    </td>
+                @endif
+                
             </tr>
             @endif
             

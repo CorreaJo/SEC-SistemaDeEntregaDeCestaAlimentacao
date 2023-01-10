@@ -2,7 +2,9 @@
     <form action="#" class="pesquisar">
         <div>
             <input class="input-pesquisar" type="text" placeholder="Pesquisar por nome ou CPF">
-            <button type="submit">Pesquisar</button>
+            <x-button>
+                Pesquisar
+            </x-button>
         </div>
         <div>
             <input class="radio" type="radio" value="nome" id="nome" name="pesquisar" checked> <label for="nome">Nome</label>
@@ -49,22 +51,6 @@
 
     .input-pesquisar::placeholder{
         padding-left: 10px;
-    }
-
-    .pesquisar button {
-        background-color: transparent;
-        padding: 5px;
-        border-radius: 5px;
-        width: 100px;
-        border: 1px solid rgba(0, 0, 0, 0.568);
-        color: #145DA0;
-        transition: 0.3s;
-    }
-
-    .pesquisar button:hover {
-        cursor: pointer;
-        background-color: #145DA0;
-        color: white;
     }
 
     .cadastrar {
