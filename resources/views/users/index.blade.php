@@ -45,9 +45,9 @@
                         <form  class="mr-2" action="{{route('users.delete', $user->id)}}"        method="POST">
                             @method('DELETE')
                             @csrf
-                            <button class="flex items-center border rounded p-2 hover:bg-red-700 hover:text-white"><img src="{{asset('images/lixeira.png')}}" alt="">Deletar</button>
+                            <button class="flex items-center border rounded p-2 hover:bg-red-700 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/lixeira.png')}}" alt="">Deletar</button>
                         </form>
-                        <a href="{{route('users.edit', $user->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white"><img src="{{asset('images/refrescar.png')}}" alt="">Editar</a>
+                        <a href="{{route('users.edit', $user->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/refrescar.png')}}" alt="">Editar</a>
                     </td>
                 @endif
                 

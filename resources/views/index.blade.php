@@ -19,7 +19,6 @@
                 
             </div>
         </div>
-        <x-cupom />
     @endunless
 
     @if (Auth::user()->unidade === 'compras')

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('dataDisp');
             $table->date('dataLimite');  
             $table->string('status');
-            $table->foreignId('idBeneficiado')->references('id')->on('beneficiado')->onDelete('cascade');
+            $table->foreignId('idBeneficiado')->references('id')->on('beneficiados')->onDelete('cascade');
             $table->timestamps();
         });
     }

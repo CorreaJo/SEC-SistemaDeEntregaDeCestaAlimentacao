@@ -1,15 +1,15 @@
 <div class="content">
-    <form action="#" class="pesquisar">
+    <form action="{{route('pesquisa')}}" class="pesquisar">
         <div>
-            <input class="input-pesquisar" type="text" placeholder="Pesquisar por nome ou CPF">
+            <input class="input-pesquisar" type="text" placeholder="Pesquisar por nome ou CPF" name="pesquisa">
             <x-button>
                 Pesquisar
             </x-button>
         </div>
         <div>
-            <input class="radio" type="radio" value="nome" id="nome" name="pesquisar" checked> <label for="nome">Nome</label>
+            <input class="radio" type="radio" value="nome" id="nome" name="tipo_pesquisa" checked> <label for="nome">Nome</label>
 
-            <input class="radio" type="radio" value="cpf" id="cpf" name="pesquisar">
+            <input class="radio" type="radio" value="cpf" id="cpf" name="tipo_pesquisa">
             <label for="cpf">CPF</label>
         </div>
     </form>

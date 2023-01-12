@@ -5,7 +5,6 @@ use App\Http\Controllers\{
     BeneficiadoController,
     UserController,
 };
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +28,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post('funcionario/{id}', [UserController::class, 'update'])->name('users.update');
 
     Route::get('/beneficiado/create', [BeneficiadoController::class, 'create'])->name('beneficiado.create');
+    Route::post('/beneficiado/store', [BeneficiadoController::class, 'store'])->name('beneficiado.register');
+    Route::get('/pesquisa', [BeneficiadoController::class, 'pesquisa'])->name('pesquisa');
 });
 
 
