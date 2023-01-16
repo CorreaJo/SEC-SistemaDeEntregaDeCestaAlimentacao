@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/beneficiado/create', [BeneficiadoController::class, 'create'])->name('beneficiado.create');
     Route::post('/beneficiado/store', [BeneficiadoController::class, 'store'])->name('beneficiado.register');
+    Route::get('/beneficiado/{id}', [BeneficiadoController::class, 'show'])->name('beneficiado.show');
     Route::get('/pesquisa', [BeneficiadoController::class, 'pesquisa'])->name('pesquisa');
 });
 

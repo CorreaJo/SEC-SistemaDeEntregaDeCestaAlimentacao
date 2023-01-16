@@ -58,7 +58,11 @@
                 </div>
     
                 <!-- Unidade -->
-                <div class="mt-4">
+
+                <input type="hidden" name="unidade" value="{{Auth::user()->unidade}}">
+
+                <!--
+                    <div class="mt-4">
                     <x-label for="unidade" :value="__('Unidade')" />
     
                     <select name="unidade" id="unidade" class="w-full">
@@ -68,7 +72,8 @@
                         <option value="Cras Padre José">Cras Padre José</option>
                         <option value="Cras Lívia Stefany">Cras Lívia Stefany</option>
                     </select>
-                </div>
+                    </div>
+                 -->
     
     
                 <div class="flex items-center justify-end mt-4">

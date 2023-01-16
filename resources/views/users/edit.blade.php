@@ -52,11 +52,31 @@
 
                 <select name="unidade" id="unidade" class="w-full">
                     @unless (Auth::user()->unidade === 'compras' || Auth::user()->unidade === 'entrega')
-                        <option value="" disabled selected>Selecione a unidade</option>
-                        <option value="Cras Marina Caron">Cras Marina Caron</option>
-                        <option value="Cras Regiane Félix">Cras Regiane Félix</option>
-                        <option value="Cras Padre José">Cras Padre José</option>
-                        <option value="Cras Lívia Stefany">Cras Lívia Stefany</option>
+                        <option value="" disabled>Selecione a unidade</option>
+                        @if (Auth::user()->unidade === 'Cras Marina Caron')
+                            <option value="Cras Marina Caron" selected>Cras Marina Caron</option>
+                            <option value="Cras Regiane Félix">Cras Regiane Félix</option>
+                            <option value="Cras Padre José">Cras Padre José</option>
+                            <option value="Cras Lívia Stefany">Cras Lívia Stefany</option>
+                        
+                        @elseif (Auth::user()->unidade === 'Cras Regiane Félix')
+                            <option value="Cras Marina Caron">Cras Marina Caron</option>
+                            <option value="Cras Regiane Félix" selected>Cras Regiane Félix</option>
+                            <option value="Cras Padre José">Cras Padre José</option>
+                            <option value="Cras Lívia Stefany">Cras Lívia Stefany</option>
+                        
+                        @elseif (Auth::user()->unidade === 'Cras Padre José')
+                            <option value="Cras Marina Caron">Cras Marina Caron</option>
+                            <option value="Cras Regiane Félix">Cras Regiane Félix</option>
+                            <option value="Cras Padre José" selected>Cras Padre José</option>
+                            <option value="Cras Lívia Stefany">Cras Lívia Stefany</option>
+
+                        @elseif (Auth::user()->unidade === 'Cras Lívia Stefany')
+                            <option value="Cras Marina Caron">Cras Marina Caron</option>
+                            <option value="Cras Regiane Félix">Cras Regiane Félix</option>
+                            <option value="Cras Padre José">Cras Padre José</option>
+                            <option value="Cras Lívia Stefany" selected>Cras Lívia Stefany</option>
+                        @endif                        
                     @endunless
                     
                     @if (Auth::user()->unidade === 'compras')

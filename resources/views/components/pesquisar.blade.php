@@ -61,5 +61,11 @@
         color: white;
         border-radius: 5px;
         margin-left: 20px;
+        font-weight: 600;
+        justify-content: center;
+    }
+
+    .cadastrar img {
+        margin-right: 3%;
     }
 </style>

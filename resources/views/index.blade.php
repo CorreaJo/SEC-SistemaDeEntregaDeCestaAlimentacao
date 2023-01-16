@@ -24,7 +24,13 @@
     @if (Auth::user()->unidade === 'compras')
         <h2>tem que fazer - Compras</h2>
     @elseif (Auth::user()->unidade === 'entrega')
-        <h1 class="text-center text-2xl font-bold">Consultar Cupons</h1>
+    <div class="flex items-center justify-center h-[70vh] flex-row">
+        <div>
+            <h1 class="text-center text-2xl font-bold">Consultar Cupons</h1>
+            <x-pesquisar />
+            
+        </div>
+    </div>
     @endif
     
     

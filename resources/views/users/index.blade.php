@@ -21,23 +21,23 @@
                     <th scope="col" class="text-sm font-medium text-white px-6 py-4">Açoes</th>
                 @endif
             </tr>
-        </thead class="border-b">
+        </thead>
         <tbody>
             @foreach ($users as $user)
             @if ($user->perfil === 'admin')
                 <h2 class="text-center p-6 text-2xl underline text-white bg-gray-800">Todos os Funcionários</h2>
             @else
             <tr class="bg-white border-b">
-                <td class="text-sm text-gray-900 font-semibold font-light px-6 py-4 whitespace-nowrap">
+                <td class="text-lg text-gray-900 font-semibold px-6 py-4 whitespace-nowrap ">
                     <a href="#">{{$user->name}}</a>
                 </td> 
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
                     {{$user->email}}
                 </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
                     {{$user->unidade}}
                 </td>
-                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
                     {{$user->perfil}}
                 </td>
                 @if (Auth::user()->perfil === 'Coordenador' || Auth::user()->perfil === 'admin')

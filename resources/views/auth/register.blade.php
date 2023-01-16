@@ -32,7 +32,7 @@
             <div class="mt-4">
                 <x-label for="perfil" :value="__('Perfil')" />
 
-                <select name="perfil" id="perfil" class="w-full">
+                <select name="perfil" id="perfil" class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50">
                     <option value="" disabled selected>Selecione o Perfil</option>
                     <option value="Técnico">Técnico</option>
                     <option value="Coordenador">Coordenador</option>
@@ -43,25 +43,35 @@
              <div class="mt-4">
                 <x-label for="unidade" :value="__('Unidade')" />
 
-                <select name="unidade" id="unidade" class="w-full">
-                    @unless (Auth::user()->unidade === 'compras' || Auth::user()->unidade === 'entrega')
+                <select name="unidade" id="unidade" class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50">
+                    @if (Auth::user()->perfil === 'admin')
                         <option value="" disabled selected>Selecione a unidade</option>
                         <option value="Cras Marina Caron">Cras Marina Caron</option>
                         <option value="Cras Regiane Félix">Cras Regiane Félix</option>
                         <option value="Cras Padre José">Cras Padre José</option>
                         <option value="Cras Lívia Stefany">Cras Lívia Stefany</option>
-                    @endunless
-                    
-                    @if (Auth::user()->unidade === 'compras')
-                        <option value="" disabled selected>Selecione a unidade</option>
                         <option value="compras">Compras</option>
-
-                    @elseif (Auth::user()->unidade === 'entrega')
-                        <option value="" disabled selected>Selecione a unidade</option>
                         <option value="entrega">Entrega</option>
-                    @endif
+                    @else
+                        @unless (Auth::user()->unidade === 'compras' || Auth::user()->unidade === 'entrega')
+                            <option value="" disabled selected>Selecione a unidade</option>
+                            <option value="Cras Marina Caron">Cras Marina Caron</option>
+                            <option value="Cras Regiane Félix">Cras Regiane Félix</option>
+                            <option value="Cras Padre José">Cras Padre José</option>
+                            <option value="Cras Lívia Stefany">Cras Lívia Stefany</option>
+                        @endunless
+                        
+                        @if (Auth::user()->unidade === 'compras')
+                            <option value="" disabled selected>Selecione a unidade</option>
+                            <option value="compras">Compras</option>
 
-                    
+                        @elseif (Auth::user()->unidade === 'entrega')
+                            <option value="" disabled selected>Selecione a unidade</option>
+                            <option value="entrega">Entrega</option>
+
+                        
+                        @endif
+                    @endif
                     
                 </select>
             </div>

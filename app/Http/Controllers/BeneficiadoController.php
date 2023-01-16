@@ -43,4 +43,11 @@ class BeneficiadoController extends Controller
             return view('pesquisa', compact('beneficiados'));
         }
     }
+
+    public function show($id){
+        if(!$beneficiado = Beneficiado::find($id))
+            return redirect()->back();
+        
+        return view('beneficiado.show', compact('beneficiado'));
+    }
 }
