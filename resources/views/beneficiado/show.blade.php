@@ -26,7 +26,7 @@
         @endif
     </div>
 
-    <div class="p-5 w-[70vw] m-auto rounded-lg shadow shadow-gray-700 mt-3">
+    <div class="p-5 w-[70vw] m-auto rounded-lg shadow-md shadow-gray-700 mt-3">
         <h1 class="text-center font-bold text-2xl">{{$beneficiado->nome}}</h1>
         <div class="flex justify-around w-full mt-5">
             <div>
@@ -35,6 +35,9 @@
 
                 <x-label for="rg" :value="__('RG')" />
                 <input class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->rg}}">
+
+                <x-label for="rg" :value="__('Unidade')" />
+                <input class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->unidade}}">
             </div>
             <div>
                 <x-label for="endereco" :value="__('Endereço')" />
@@ -44,6 +47,11 @@
                 <input class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->quantMembros}}">
             </div>
         </div>
+    </div>
+    <div class="m-5 mt-8">
+        <a href="#" class="p-4 bg-[#145DA0] rounded-md text-white font-semibold hover:bg-[#1f7fda] transition duration-0 hover:duration-500 ">
+            Gerar Cupom
+        </a>
     </div>
     <div class="mt-6">
         <h2 class="text-center font-semibold text-2xl">Cestas Provisionadas</h2>
