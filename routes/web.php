@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     BeneficiadoController,
     UserController,
+    CupomController,
 };
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/beneficiado/store', [BeneficiadoController::class, 'store'])->name('beneficiado.register');
     Route::get('/beneficiado/{id}', [BeneficiadoController::class, 'show'])->name('beneficiado.show');
     Route::get('/pesquisa', [BeneficiadoController::class, 'pesquisa'])->name('pesquisa');
+
+    Route::get('/cupom/{id}/create', [CupomController::class, 'create'])->name('cupom.create');
+    Route::post('/cupom/{id}/store', [CupomController::class, 'store'])->name('cupom.store');
 });
 
 

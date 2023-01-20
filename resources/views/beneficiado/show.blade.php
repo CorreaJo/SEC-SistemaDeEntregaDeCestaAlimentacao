@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="m-5 mt-8">
-        <a href="#" class="p-4 bg-[#145DA0] rounded-md text-white font-semibold hover:bg-[#1f7fda] transition duration-0 hover:duration-500 ">
+        <a href="{{route('cupom.create', $beneficiado->id)}}" class="p-4 bg-[#145DA0] rounded-md text-white font-semibold hover:bg-[#1f7fda] transition duration-0 hover:duration-500 ">
             Gerar Cupom
         </a>
     </div>
