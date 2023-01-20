@@ -31,6 +31,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/beneficiado/store', [BeneficiadoController::class, 'store'])->name('beneficiado.register');
     Route::get('/beneficiado/{id}', [BeneficiadoController::class, 'show'])->name('beneficiado.show');
     Route::get('/pesquisa', [BeneficiadoController::class, 'pesquisa'])->name('pesquisa');
+    Route::delete('/beneficiado/delete/{id}', [BeneficiadoController::class, 'delete'])->name('beneficiado.delete');
+    Route::get('/beneficiado/edit/{id}', [BeneficiadoController::class, 'edit'])->name('beneficiado.edit');
+    Route::post('/beneficiado/edit/{id}', [BeneficiadoController::class, 'update'])->name(('beneficiado.update'));
 });
 
 
