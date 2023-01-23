@@ -37,4 +37,12 @@ class CupomController extends Controller
 
         return redirect()->route('beneficiado.show', $idBeneficiado);
     }
+
+    public function delete(Request $request, $id){
+        if(!$cupom = Cupom::find($id))
+            return redirect()->route('beneficiado.show', $request->idBeneficiado);
+
+        $cupom->delete();
+        return redirect()->route('beneficiado.show', $request->idBeneficiado);
+    }
 }

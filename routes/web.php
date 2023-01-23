@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/cupom/{id}/create', [CupomController::class, 'create'])->name('cupom.create');
     Route::post('/cupom/{id}/store', [CupomController::class, 'store'])->name('cupom.store');
+    Route::post('/cupom/{id}/delete', [CupomController::class, 'delete'])->name('cupom.delete');
 });
 
 
