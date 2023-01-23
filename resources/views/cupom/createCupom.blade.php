@@ -23,25 +23,32 @@
             <form action="{{route('cupom.store', $beneficiado->id)}}" method="post">
                 @csrf
                 <div id="inputs">
-                    <div>
-                        <x-label for="mes" :value="__('Selecione o Mês:')" />
-                        <select class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50 block mt-1 w-full" name="mes" id="mes">
-                            <option value="" selected disabled>Selecione o mês</option>
-                            <option value="01">Janeiro</option>
-                            <option value="02">Fevereiro</option>
-                            <option value="03">Março</option>
-                            <option value="04">Abril</option>
-                            <option value="05">Maio</option>
-                            <option value="06">Junho</option>
-                        </select>
-                    </div>
-                    <div>
-                        <x-label for="dia" :value="__('Selecione o Dia:')" />
-                        <x-input id="dia" class="block mt-1 w-full" type="number" name="dia" :value="old('dia')" required />
-                    </div>
+                    <table id="dynamicAddRemove">
+                        <tr>
+                            <td>
+                                <!--<div>
+                                    <x-label for="mes" :value="__('Selecione o Mês:')" />
+                                    <select class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50 block mt-1 w-full" name="mes" id="mes">
+                                        <option value="" selected disabled>Selecione o mês</option>
+                                        <option value="01">Janeiro</option>
+                                        <option value="02">Fevereiro</option>
+                                        <option value="03">Março</option>
+                                        <option value="04">Abril</option>
+                                        <option value="05">Maio</option>
+                                        <option value="06">Junho</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <x-label for="dia" :value="__('Selecione o Dia:')" />
+                                    <x-input id="dia" class="block mt-1 w-full" type="number" name="dia" :value="old('dia')" required />
+                                </div>-->
+                                <input type="date" name="data[0]" id="dataCesta" value="" />                           
+                            </td>
+                        </tr>
+                    </table>
                 </div>
 
-                <template class="tpl">
+                <!--<template class="tpl">
                       <div>
                           <x-label for="mes" :value="__('Selecione o Mês:')" />
                           <select class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50 block mt-1 w-full" name="mes" id="mes">
@@ -58,9 +65,8 @@
                           <x-label for="dia" :value="__('Selecione o Dia:')" />
                           <x-input id="dia" class="block mt-1 w-full" type="number" name="dia" :value="old('dia')" required />
                       </div>
-                </template>
+                </template>-->
 
-                <input type="hidden" value="2023" name="ano">
                 <input type="hidden" value="{{$beneficiado->id}}" name="idBeneficiado">
         
                 <button>Cadastrar</button>
@@ -70,12 +76,26 @@
 </body>
 </html>
 
-<script>
+<!--<script>
     var count = 0;
     $('#adicionar').on('click', function() {
         count += 1;
         $( "#mes" ).prop( "name", "mes"+count);
         $( "#dia" ).prop( "name", "dia"+count);
         $('#inputs').append($('template.tpl').html());
+    });
+</script>-->
+
+<script>
+    var i = 0;
+    $('#adicionar').click(function () {
+        ++i;
+        $("#dynamicAddRemove").append('<tr><td><input type="date" name="data[' + i + ']" id="dataCesta" value="[subject]" /></td></tr>');
+        /*++i;
+        $('#inputs').append('<div><option value="" selected disabled>Selecione o mês</option><option value="01">Janeiro</option><option value="02">Fevereiro</option><option value="03">Março</option><option value="04">Abril</option><option value="05">Maio</option><option value="06">Junho</option></select></div><div><x-input id="dia" class="block mt-1 w-full" type="number" name="dia" required /></div>');*/
+
+        /*$("#dynamicAddRemove").append('<tr><td><input type="text" name="NomePalestrante[' + i +
+            '][subject]" class="form-control" id="NomePalestrante"value="{{ isset($atividades) ? $atividades->NomePalestrante : "" }}" /></td><td><button type="button" class="btn btn-outline-danger remove-input-field">Deletar</button></td></tr>'
+            );*/
     });
 </script>
