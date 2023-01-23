@@ -34,7 +34,7 @@ class CupomController extends Controller
                 'idBeneficiado' => $idBeneficiado
             ]);
         }
-        $idBeneficiado = strval($idBeneficiado);
-        return redirect()->route('index');
+
+        return redirect()->route('beneficiado.show', $idBeneficiado);
     }
 }
