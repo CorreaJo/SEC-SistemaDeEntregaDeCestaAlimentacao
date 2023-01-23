@@ -1,7 +1,7 @@
 <header>
     <x-application-logo class="w-[120px]" />
     <div class="links" id="links">
-        <a class="link"  href="{{route('index')}}">Página Princpal</a>
+        <a class="link"  href="{{route('index')}}">Página Principal</a>
         @if (Auth::user()->perfil === 'admin' || Auth::user()->perfil === 'Coordenador')
             <a class="link" href="{{route('register')}}">Registrar Funcionário</a>
             <a class="link" href="{{route('users.index')}}">Ver Funcionários</a>
