@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use App\Models\Beneficiado;
 use App\Models\Cupom;
 use Carbon\Carbon;
+use DateTimeZone;
+use Illuminate\Support\Facades\Validator;
 
 class CupomController extends Controller
 {
@@ -16,6 +18,7 @@ class CupomController extends Controller
     }
 
     public function store(Request $request){
+
         foreach ($request->data as $chave=>$valor){
             $dataDisp = $valor;
 
