@@ -55,6 +55,23 @@
     </div>
     <div class="mt-6">
         <h2 class="text-center font-semibold text-2xl">Cestas Provisionadas</h2>
+
+        <div class="flex justify-around">
+            @foreach ($cupons as $cupom)
+                <div class="bg-slate-700 w-[350px] rounded-xl h-[150px] text-white p-3 flex flex-col justify-center">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2>{{$cupom->id}}</h2>
+                        <form  class="mr-2" action="#" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button class="rounded p-2 hover:bg-red-700 transition duration-0 hover:duration-500"><img src="{{asset('images/lixeira.png')}}" alt=""></button>
+                        </form>
+                    </div>
+                    <h1 class="text-center font-bold text-2xl">{{$beneficiado->nome}}</h1>
+                    <h3 class="mt-4">Data: {{$cupom->dataDisp}}</h3>
+                </div>
+            @endforeach
+        </div>
     </div>
 </body>
 </html>

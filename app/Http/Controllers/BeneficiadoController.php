@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Beneficiado;
+use App\Models\Cupom;
 use Illuminate\Http\Request;
 
 class BeneficiadoController extends Controller
@@ -47,6 +48,11 @@ class BeneficiadoController extends Controller
     public function show($id){
         if(!$beneficiado = Beneficiado::find($id))
             return redirect()->back();
+
+        $cupons = Cupom::where('idBeneficiado', '=', "$id")->get();
+        if($cupons){
+            return view('beneficiado.show', compact('beneficiado', 'cupons'));
+        }
         
         return view('beneficiado.show', compact('beneficiado'));
     }
