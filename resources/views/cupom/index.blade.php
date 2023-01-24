@@ -9,13 +9,12 @@
     <script src="{{asset('js/app.js')}}"></script>
 </head>
 <body>
-    <x-cabecalho />
-        <div class="flex items-center justify-center h-[70vh] flex-row">
-            <div>
-                <h1 class="text-center text-2xl font-bold">Consultar Cestas</h1>
-                <x-pesquisar />
-                
-            </div>
+    <div class="flex items-center justify-center h-[70vh] flex-row">
+        <div>
+            <h1 class="text-center text-2xl font-bold">Consultar Cupons</h1>
+            <x-pesquisar />
+            
         </div>
+    </div>
 </body>
 </html>

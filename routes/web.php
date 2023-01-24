@@ -23,6 +23,9 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/index', [UserController::class, 'index'])->name('index');
+    Route::get('/entrega', [UserController::class, 'index'])->name(('entrega.index'));
+    Route::get('/compras', [UserController::class, 'index'])->name(('compras.index'));
+
     Route::get('/funcionarios', [UserController::class, 'lista'])->name('users.index');
     Route::delete('/funcionario/{id}', [UserController::class, 'delete'])->name('users.delete');
     Route::get('/funcionarios/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
