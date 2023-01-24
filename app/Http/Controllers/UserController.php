@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Models\Cupom;
 use App\Models\User;
 use Carbon\Carbon;
@@ -13,7 +12,19 @@ class UserController extends Controller
 {
     public function index() {
         if(Auth::user()->unidade === "compras"){
-            return view('compras.index');
+            $dataHoje = Carbon::today('America/Sao_Paulo');
+            $cuponsDispDia = Cupom::whereDate('dataDisp', $dataHoje)->count();
+            
+            $mes = $dataHoje->format('m');
+            $cuponsDispMes = Cupom::whereMonth('dataDisp', $mes)->count();
+            
+            $proxMes = $dataHoje->addMonths(1)->format('m');
+            $cuponsProxMes = Cupom::whereMonth('dataDisp', $proxMes)->count();
+            
+            $ano = $dataHoje->format('Y');
+            $cuponsAno = Cupom::whereYear('dataDisp', $ano)->count();
+            
+            return view('compras.index', compact('cuponsDispDia', 'cuponsDispMes', 'cuponsProxMes', 'cuponsAno'));
         }
 
         if (Auth::user()->unidade === "entrega"){
