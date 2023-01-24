@@ -21,11 +21,16 @@ class CupomController extends Controller
 
         foreach ($request->data as $chave=>$valor){
             $dataDisp = $valor;
+            $hoje = Carbon::today();
 
             $dataLimite = Carbon::createFromDate($dataDisp, 'America/Sao_Paulo');
             $dataLimite->addDays(3);
 
             $status = "ativo";
+            
+            if ($hoje < $dataDisp){
+                $status = "inativo";
+            }
 
             $idBeneficiado = $request->idBeneficiado;
             $idBeneficiado = intval($idBeneficiado);
@@ -56,5 +61,17 @@ class CupomController extends Controller
             return redirect()->route('beneficiado.show', $idBeneficiado);
         }
         return redirect()->route('beneficiado.show', $idBeneficiado);
+    }
+
+    public function show($idBeneficiado, $idCupom){
+        if(!$cupom = Cupom::find($idCupom)){
+            return redirect()->back();
+        }
+
+        if(!$beneficiado = Beneficiado::find($idBeneficiado)){
+            return redirect()->back();
+        }
+
+        return view('cupom.show', compact('beneficiado', 'cupom'));
     }
 }

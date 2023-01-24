@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cupom;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -14,9 +17,19 @@ class UserController extends Controller
         }
 
         if (Auth::user()->unidade === "entrega"){
-            return view('entrega.index');
+
+            $dataDisp = Carbon::today();
+
+            $dataLimite = Carbon::createFromDate($dataDisp, 'America/Sao_Paulo');
+            $dataLimite->addDays(3);
+
+            $cupons = DB::table('cupoms')
+                ->where('status', '=', 'ativo')
+                ->paginate(20);
+
+                return view('cupom.index', compact('cupons'));
         }
-        
+
         return view('index');
     }
 

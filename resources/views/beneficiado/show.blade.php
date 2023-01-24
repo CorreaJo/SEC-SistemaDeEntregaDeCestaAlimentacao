@@ -26,7 +26,7 @@
         @endif
     </div>
 
-    <div class="p-5 w-[70vw] m-auto rounded-lg shadow-md shadow-gray-700 mt-3">
+    <div class="p-5 w-[70vw] m-auto rounded-lg shadow-md shadow-gray-700 mt-3 bg-[#B1D4E0]">
         <h1 class="text-center font-bold text-2xl">{{$beneficiado->nome}}</h1>
         <div class="flex justify-around w-full mt-5">
             <div>
