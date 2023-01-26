@@ -15,7 +15,7 @@
     </form>
 
     <div>
-        @unless (Auth::user()->unidade != "compras" || Auth::user()->unidade != "entrega")   
+        @unless (Auth::user()->unidade === "compras" || Auth::user()->unidade === "entrega")   
             <a  class="cadastrar" href="{{route('beneficiado.create')}}">
                 <img src="{{asset('images/Vectorcadastrar.png')}}" alt="">
                 <div>

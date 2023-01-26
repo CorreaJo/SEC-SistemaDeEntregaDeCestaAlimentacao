@@ -37,8 +37,10 @@
         <h3 class="mt-4">Data: {{\Carbon\Carbon::parse($cupom->dataDisp)->format('d/m/Y')}}</h3>
     </div>
 
-    <a href="#">
-        <div class="m-auto mt-8 text-center p-4 w-[50vw] bg-green-500 text-xl font-semibold text-white rounded-lg">Marcar Como Retirado</div>
-    </a>
+    <form action="{{route('cupom.update')}}" method="post">
+        @csrf
+        <input type="hidden" name="idCupom" value="{{ $cupom->id }}">
+        <button class="m-auto mt-8 text-center p-4 w-[50vw] bg-green-500 text-xl font-semibold text-white rounded-lg">Marcar Como Retirado</button>
+    </form>
 </body>
 </html>

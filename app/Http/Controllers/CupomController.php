@@ -7,6 +7,7 @@ use App\Models\Cupom;
 use Carbon\Carbon;
 use DateTimeZone;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class CupomController extends Controller
 {
@@ -73,5 +74,21 @@ class CupomController extends Controller
         }
 
         return view('cupom.show', compact('beneficiado', 'cupom'));
+    }
+
+    public function update(Request $request){
+        $cupom = Cupom::find($request->idCupom);
+        $hoje = Carbon::today();
+        $cupom->update(['status' => "inativo", 'dataRetirada' => $hoje]);
+
+        $dataDisp = Carbon::today();
+        $dataLimite = Carbon::createFromDate($dataDisp, 'America/Sao_Paulo');
+        $dataLimite->addDays(3);
+
+        $cupons = DB::table('cupoms')
+            ->where('status', '=', 'ativo')
+            ->paginate(20);
+
+        return view('cupom.index', compact('cupons'));
     }
 }
