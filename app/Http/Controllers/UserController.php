@@ -76,8 +76,8 @@ class UserController extends Controller
         if(!$user = User::find($id))
             return redirect()->route('users.index');
         
-            
         $user->update($request->all());
+        
         return redirect()->route('users.index');
     }
 }
