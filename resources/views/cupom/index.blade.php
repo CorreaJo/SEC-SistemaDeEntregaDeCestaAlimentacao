@@ -31,7 +31,11 @@
                
                 <tr class="border-b cursor-pointer hover:bg-gray-500  transition duration-0 hover:duration-500" onclick="window.location='{{route('cupom.show', array('id'=> $cupom->idBeneficiado, 'idCupom'=> $cupom->id))}}'">
                     <td class="text-lg text-gray-900 font-semibold px-6 py-4 whitespace-nowrap">
-                        {{$cupom->id}}
+                    @php
+                        $pr_id = $cupom->id;
+                        $pr_id = sprintf("%06d", $pr_id);
+                    @endphp
+                    <h2>{{$pr_id}}</h2>
                     </td>
                     <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
                         {{\Carbon\Carbon::parse($cupom->dataDisp)->format('d/m/Y')}}
@@ -46,5 +50,6 @@
         </table>
         {{$cupons->withQueryString()->links()}}
     </div>
+    <x-rodape />
 </body>
 </html>

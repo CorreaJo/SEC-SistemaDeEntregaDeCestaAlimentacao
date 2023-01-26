@@ -30,17 +30,22 @@
     </div>
     <div class="bg-slate-700 w-[350px] rounded-xl h-[150px] text-white p-3 flex flex-col justify-center m-auto mt-5">
         <div class="flex items-center justify-between mb-4">
-            <h2>{{$cupom->id}}</h2>
+            @php
+                $pr_id = $cupom->id;
+                $pr_id = sprintf("%06d", $pr_id);
+            @endphp
+            <h2>{{$pr_id}}</h2>
             <h2>{{$beneficiado->cpf}}</h2>
         </div>
         <h1 class="text-center font-bold text-2xl">{{$beneficiado->nome}}</h1>
         <h3 class="mt-4">Data: {{\Carbon\Carbon::parse($cupom->dataDisp)->format('d/m/Y')}}</h3>
     </div>
 
-    <form action="{{route('cupom.update')}}" method="post">
+    <form class="text-center" action="{{route('cupom.update')}}" method="post">
         @csrf
         <input type="hidden" name="idCupom" value="{{ $cupom->id }}">
         <button class="m-auto mt-8 text-center p-4 w-[50vw] bg-green-500 text-xl font-semibold text-white rounded-lg">Marcar Como Retirado</button>
     </form>
+    <x-rodape />
 </body>
 </html>

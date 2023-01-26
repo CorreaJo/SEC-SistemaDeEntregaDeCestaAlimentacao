@@ -58,5 +58,6 @@
             @endforeach
         </tbody>
     </table>
+    <x-rodape />
 </body>
 </html>

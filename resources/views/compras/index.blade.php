@@ -10,20 +10,88 @@
 </head>
 <body>
     <x-cabecalho />
-        <div class="flex items-center justify-center h-[70vh] flex-row">
-            <div>
-                <h1 class="text-center text-2xl font-bold">Consultar Cestas</h1>
-                <x-pesquisar />
-                <p>Total de Cestas Disponibilizadas</p>
-                <p>Dia Atual: {{ $cuponsDispDia }}</p>
-                <p>Mês Atual: {{ $cuponsDispMes }}</p><br>
+        <h1 class="text-center text-2xl font-bold m-5">Consultar Relatórios</h1>
+        <div class="flex justify-around flex-wrap">
+            <div class="w-[50vw]">
+                <table class="m-auto w-3/4 bg-cyan-800 p-4 rounded-xl text-white font-medium">
+                    <thead class="border-b border-black ">
+                        <tr>
+                            <th colspan="2" role="columnheader" scope="col" class="font-medium text-white px-6 py-4">
+                                Total de Cestas Disponibilizadas
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Dia Atual:</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsDispDia }}</td>
+                        </tr>
+                        <tr>
+                            <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Mês Atual:</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsDispMes }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <p>Total de Cestas Previstas Para o Mês Seguinte</p>
-                <p>Total: {{ $cuponsProxMes }}</p><br>
+            <div class="w-[50vw]">
+                <table class="m-auto w-3/4 bg-cyan-800 p-4 rounded-xl text-white font-medium">
+                    <thead class="border-b border-black ">
+                        <tr>
+                            <th colspan="2" role="columnheader" scope="col" class="font-medium text-white px-6 py-4">
+                                Total de Cestas Retiradas
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Dia Atual:</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsRetiradaDia }}</td>
+                        </tr>
+                        <tr>
+                            <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Mês Atual:</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsRetiradaMes }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <p>Total de Cestas Previstas Para o Ano</p>
-                <p>Total: {{ $cuponsAno }}</p>
+            <div class="w-[50vw] mt-8">
+                <table class="m-auto w-3/4  bg-cyan-800 p-4 rounded-xl text-white font-medium">
+                    <thead class="border-b border-black ">
+                        <tr>
+                            <th colspan="2" role="columnheader" scope="col" class="font-medium text-white px-6 py-4">
+                                Total de Cestas Previstas Para o Mês Seguinte
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Total:</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsProxMes }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="w-[50vw] mt-8">
+                <table class="m-auto w-3/4 bg-cyan-800 p-4 rounded-xl text-white font-medium">
+                    <thead class="border-b border-black ">
+                        <tr>
+                            <th colspan="2" role="columnheader" scope="col" class="font-medium text-white px-6 py-4">
+                                Total de Cestas Previstas Para o Ano
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Total:</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsAno }}</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
+        <x-rodape />
 </body>
 </html>

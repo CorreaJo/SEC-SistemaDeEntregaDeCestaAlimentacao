@@ -14,9 +14,13 @@ class UserController extends Controller
         if(Auth::user()->unidade === "compras"){
             $dataHoje = Carbon::today('America/Sao_Paulo');
             $cuponsDispDia = Cupom::whereDate('dataDisp', $dataHoje)->count();
+
+            $cuponsRetiradaDia = Cupom::whereDate('dataRetirada', $dataHoje)->count();
             
             $mes = $dataHoje->format('m');
             $cuponsDispMes = Cupom::whereMonth('dataDisp', $mes)->count();
+
+            $cuponsRetiradaMes = Cupom::whereMonth('dataRetirada', $mes)->count();
             
             $proxMes = $dataHoje->addMonths(1)->format('m');
             $cuponsProxMes = Cupom::whereMonth('dataDisp', $proxMes)->count();
@@ -24,7 +28,7 @@ class UserController extends Controller
             $ano = $dataHoje->format('Y');
             $cuponsAno = Cupom::whereYear('dataDisp', $ano)->count();
             
-            return view('compras.index', compact('cuponsDispDia', 'cuponsDispMes', 'cuponsProxMes', 'cuponsAno'));
+            return view('compras.index', compact('cuponsDispDia', 'cuponsDispMes', 'cuponsProxMes', 'cuponsAno', 'cuponsRetiradaDia', 'cuponsRetiradaMes'));
         }
 
         if (Auth::user()->unidade === "entrega"){
