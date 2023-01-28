@@ -30,6 +30,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/funcionario/{id}', [UserController::class, 'delete'])->name('users.delete');
     Route::get('/funcionarios/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
     Route::post('funcionario/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::get('funcionario/verificarSenha', [UserController::class, 'verificarSenha'])->name('users.verificarSenha');
+    Route::post('funcionario/editSenha', [UserController::class, 'editSenha'])->name('users.editSenha');
 
     Route::get('/beneficiado/create', [BeneficiadoController::class, 'create'])->name('beneficiado.create');
     Route::post('/beneficiado/store', [BeneficiadoController::class, 'store'])->name('beneficiado.register');

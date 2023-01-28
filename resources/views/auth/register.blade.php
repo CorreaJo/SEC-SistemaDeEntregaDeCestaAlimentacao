@@ -77,23 +77,10 @@
             </div>
 
             <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Senha')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
+                <x-input id="password" type="hidden" name="password" value="123456" />
 
             <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirmar a Senha')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
+                <x-input id="password_confirmation" type="hidden" name="password_confirmation" value="123456" />
 
             <div class="flex items-center justify-end mt-4">
 
