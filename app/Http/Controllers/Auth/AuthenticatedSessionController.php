@@ -32,8 +32,13 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('users.verificarSenha');
-        //return redirect()->intended(RouteServiceProvider::HOME);
+        $data = $request->all();
+
+        if($data['password'] ==  "123456"){
+            return redirect()->route('password.reset', $request->all());
+        }
+        
+        return redirect()->intended(RouteServiceProvider::HOME);
     }
 
     /**

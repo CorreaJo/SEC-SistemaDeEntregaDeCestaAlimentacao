@@ -84,23 +84,4 @@ class UserController extends Controller
         
         return redirect()->route('users.index');
     }
-
-    public function verificarSenha(){
-        if(password_verify("123456", Auth::user()->password)){
-            $id = Auth::user()->id;
-            return view('users.editSenha', compact('id'));
-        }
-        return redirect()->route('users.index');
-    }
-    
-    public function editSenha(){
-        die("aaa");
-        $request->validate([
-            'password' => ['required', 'confirmed', 'max:12', 'min:6'],
-        ]);
-
-        $user = User::find($request->id);
-        $user->update(['password' => Hash::make($request->password)]);
-        return redirect()->route('users.index');
-    }
 }

@@ -10,6 +10,7 @@
 </head>
 <body>
     <x-cabecalho />
+    <a href="{{route('password.reset')}}">Resetar Senha</a>
         <div class="flex items-center justify-center h-[70vh] flex-row">
             <div>
                 <h1 class="text-center text-2xl font-bold">Consultar Cestas</h1>
