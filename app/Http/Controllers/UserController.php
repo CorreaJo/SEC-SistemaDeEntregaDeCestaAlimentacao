@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\DB;
 class UserController extends Controller
 {
     public function index() {
+        $hoje = Carbon::today();
+        $cuponsAtivo = Cupom::where('dataDisp', '=', $hoje)->where('status', '=', 'inativo')->get();
+        foreach($cuponsAtivo as $cupom){
+            $cupom->update(['status' => 'ativo']);
+        }
+        $cuponsInativo = Cupom::where('dataLimite', "<=", $hoje)->where('status', '=', 'ativo')->get();
+        foreach($cuponsInativo as $cupom){
+            $cupom->update(['status' => 'inativo']);
+        }
+        
         if(Auth::user()->unidade === "compras"){
             $dataHoje = Carbon::today('America/Sao_Paulo');
             $cuponsDispDia = Cupom::whereDate('dataDisp', $dataHoje)->count();
