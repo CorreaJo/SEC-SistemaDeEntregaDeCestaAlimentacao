@@ -17,6 +17,7 @@
                 <th scope="col" class="text-sm font-medium text-white px-6 py-4">Nome</th>
                 <th scope="col" class="text-sm font-medium text-white px-6 py-4">CPF</th>
                 <th scope="col" class="text-sm font-medium text-white px-6 py-4">RG</th>
+                <th scope="col" class="text-sm font-medium text-white px-6 py-4">Endereço</th>
                 <th scope="col" class="text-sm font-medium text-white px-6 py-4">Unidade</th>
             </tr>
         </thead>
@@ -26,6 +27,7 @@
                     <td class="text-lg text-gray-900 font-semibold px-6 py-4 whitespace-nowrap ">{{$beneficiado->nome}}</td>
                     <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap ">{{$beneficiado->cpf}}</td>
                     <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap ">{{$beneficiado->rg}}</td>
+                    <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap ">{{$beneficiado->endereco}}</td>
                     <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">{{$beneficiado->unidade}}</td>
                 </tr>
             @endforeach

@@ -38,7 +38,12 @@ class BeneficiadoController extends Controller
         if($request->tipo_pesquisa === 'nome'){
             $beneficiados = Beneficiado::where('nome','LIKE',"%{$request->pesquisa}%")->get();
             return view('pesquisa', compact('beneficiados'));
-        } 
+        }
+
+        if($request->tipo_pesquisa === 'endereco'){
+            $beneficiados = Beneficiado::where('endereco','LIKE',"%{$request->pesquisa}%")->get();
+            return view('pesquisa', compact('beneficiados'));
+        }  
         
         if ($request->tipo_pesquisa === 'cpf') {
             $beneficiados = Beneficiado::where('cpf','LIKE',"%{$request->pesquisa}%")->get();
