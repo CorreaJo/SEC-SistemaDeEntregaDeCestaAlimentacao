@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('cupom', function (Blueprint $table) {
+        Schema::create('cupoms', function (Blueprint $table) {
             $table->id();
-            $table->date('dataRetirada');
+            $table->date('dataRetirada')->nullable();
             $table->date('dataDisp');
             $table->date('dataLimite');  
             $table->string('status');

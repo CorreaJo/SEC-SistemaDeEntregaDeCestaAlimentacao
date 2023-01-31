@@ -10,8 +10,7 @@
 </head>
 <body>
     <x-cabecalho />
-        
-    @unless (Auth::user()->unidade === 'compras' || Auth::user()->unidade === 'entrega')
+    <a href="{{route('password.reset')}}">Resetar Senha</a>
         <div class="flex items-center justify-center h-[70vh] flex-row">
             <div>
                 <h1 class="text-center text-2xl font-bold">Consultar Cestas</h1>
@@ -19,20 +18,6 @@
                 
             </div>
         </div>
-    @endunless
-
-    @if (Auth::user()->unidade === 'compras')
-        <h2>tem que fazer - Compras</h2>
-    @elseif (Auth::user()->unidade === 'entrega')
-    <div class="flex items-center justify-center h-[70vh] flex-row">
-        <div>
-            <h1 class="text-center text-2xl font-bold">Consultar Cupons</h1>
-            <x-pesquisar />
-            
-        </div>
-    </div>
-    @endif
-    
-    
+        <x-rodape />
 </body>
 </html>

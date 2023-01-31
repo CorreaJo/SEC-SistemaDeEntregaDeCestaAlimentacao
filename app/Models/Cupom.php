@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Cupom extends Model
 {
     use HasFactory;
+    
+    protected $fillable = [
+        'dataRetirada',
+        'dataDisp',
+        'dataLimite',
+        'status',
+        'idBeneficiado'
+    ];
 }

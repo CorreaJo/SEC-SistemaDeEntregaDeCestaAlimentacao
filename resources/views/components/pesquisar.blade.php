@@ -15,14 +15,14 @@
     </form>
 
     <div>
-        @if (Auth::user()->perfil === 'Técnico' || 'coordenador' || 'admin')   
+        @unless (Auth::user()->unidade === "compras" || Auth::user()->unidade === "entrega")   
             <a  class="cadastrar" href="{{route('beneficiado.create')}}">
                 <img src="{{asset('images/Vectorcadastrar.png')}}" alt="">
                 <div>
                     Cadastrar Pessoa
                 </div>
             </a>
-        @endif
+        @endunless
     </div>
 </div>
 
