@@ -14,6 +14,7 @@ class Cupom extends Model
         'dataDisp',
         'dataLimite',
         'status',
+        'observacao',
         'idBeneficiado'
     ];
 }

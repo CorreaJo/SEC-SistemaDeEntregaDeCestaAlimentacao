@@ -41,6 +41,13 @@
         <h3 class="mt-4">Data: {{\Carbon\Carbon::parse($cupom->dataDisp)->format('d/m/Y')}}</h3>
     </div>
 
+    @if($cupom->observacao)
+        <div class="m-auto w-1/2 bg-red-500 rounded-lg p-5 mt-8">
+            <h2 class="text-white text-2xl font-bold text-center">Observação</h2>
+            <textarea name="" id="" cols="30" rows="5" class="w-full mt-4 rounded-md shadow-md border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" disabled>{{$cupom->observacao}}</textarea>
+        </div>
+    @endif
+
     <form class="text-center" action="{{route('cupom.update')}}" method="post">
         @csrf
         <input type="hidden" name="idCupom" value="{{ $cupom->id }}">
