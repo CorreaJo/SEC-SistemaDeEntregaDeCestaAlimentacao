@@ -44,6 +44,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/cupom/{id}/deleteAll', [CupomController::class, 'deleteAll'])->name('cupom.deleteAll');
     Route::get('/cupom/{id}/{idCupom}', [CupomController::class, 'show'])->name('cupom.show');
     Route::post('/cupom/update/', [CupomController::class, 'update'])->name('cupom.update');
+    Route::get('/cupom/relatorioDisp', [CupomController::class, 'relatorioDisp'])->name('relatorioDisp');
+    Route::get('/cupom/relatorioRetirada', [CupomController::class, 'relatorioUnidadesRetirada'])->name('relatorioRetirada');
 
     Route::delete('/beneficiado/delete/{id}', [BeneficiadoController::class, 'delete'])->name('beneficiado.delete');
     Route::get('/beneficiado/edit/{id}', [BeneficiadoController::class, 'edit'])->name('beneficiado.edit');
