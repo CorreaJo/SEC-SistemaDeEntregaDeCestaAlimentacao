@@ -21,6 +21,7 @@ class CupomController extends Controller
     public function store(Request $request){
 
         foreach ($request->data as $chave=>$valor){
+            
             $dataDisp = $valor;
             $hoje = Carbon::today();
 
@@ -33,15 +34,28 @@ class CupomController extends Controller
                 $status = "inativo";
             }
 
+
+            $obs = $request->observacao;
             $idBeneficiado = $request->idBeneficiado;
             $idBeneficiado = intval($idBeneficiado);
 
-            $cupom = Cupom::create([ 
-                'dataDisp' => $dataDisp,
-                'dataLimite' => $dataLimite,
-                'status' => $status,
-                'idBeneficiado' => $idBeneficiado
-            ]);
+            if($request->data[0]){
+                $cupom = Cupom::create([ 
+                    'dataDisp' => $dataDisp,
+                    'dataLimite' => $dataLimite,
+                    'status' => $status,
+                    'observacao' => $obs,
+                    'idBeneficiado' => $idBeneficiado
+                ]);
+            } else {
+                $cupom = Cupom::create([ 
+                    'dataDisp' => $dataDisp,
+                    'dataLimite' => $dataLimite,
+                    'status' => $status,
+                    'observacao' => '',
+                    'idBeneficiado' => $idBeneficiado
+                ]);
+            }
         }
 
         return redirect()->route('beneficiado.show', $idBeneficiado);
