@@ -24,16 +24,22 @@
                     <tbody>
                         <tr>
                             <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Dia Atual:</td>
-                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsDispDia }}</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsDispDiaTotal }}</td>
                         </tr>
                         <tr>
                             <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Mês Atual:</td>
-                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsDispMes }}</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsDispMesTotal }}</td>
                         </tr>
                     </tbody>
+                    <tfoot class="border-t border-black ">
+                        <tr>
+                            <th colspan="2" role="columnheader" scope="col" class="font-medium text-white px-6 py-4 underline">
+                                <a href="{{ route('relatorioDisp') }}">Ver relatório por unidade</a>
+                            </th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
-
             <div class="w-[50vw]">
                 <table class="m-auto w-3/4 bg-cyan-800 p-4 rounded-xl text-white font-medium">
                     <thead class="border-b border-black ">
@@ -46,13 +52,20 @@
                     <tbody>
                         <tr>
                             <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Dia Atual:</td>
-                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsRetiradaDia }}</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsRetiradaDiaTotal }}</td>
                         </tr>
                         <tr>
                             <td role="gridcell" class="w-3/4 text-lg font-semibold px-6 py-4 whitespace-nowrap">Mês Atual:</td>
-                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsRetiradaMes }}</td>
+                            <td role="gridcell" class="text-lg font-semibold px-6 py-4 whitespace-nowrap text-center">{{ $cuponsRetiradaMesTotal }}</td>
                         </tr>
                     </tbody>
+                    <tfoot class="border-t border-black ">
+                        <tr>
+                            <th colspan="2" role="columnheader" scope="col" class="font-medium text-white px-6 py-4 underline">
+                                <a href="{{ route('relatorioRetirada') }}">Ver relatório por unidade</a>
+                            </th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
 
