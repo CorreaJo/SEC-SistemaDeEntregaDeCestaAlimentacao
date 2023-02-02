@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Beneficiado;
 use App\Models\Cupom;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 
 class BeneficiadoController extends Controller
@@ -55,9 +57,22 @@ class BeneficiadoController extends Controller
         if(!$beneficiado = Beneficiado::find($id))
             return redirect()->back();
 
-        $cupons = Cupom::where('idBeneficiado', '=', "$id")->get();
-        if($cupons){
-            return view('beneficiado.show', compact('beneficiado', 'cupons'));
+
+        $hoje = Carbon::today();
+        $hoje->format('Y-m-d');
+        $cuponsPrev = DB::table('cupoms')
+            ->where('idBeneficiado', '=', "$id")
+            ->where('dataDisp', '>=', "$hoje")
+            ->orWhere('status', '=', 'ativo')
+            ->get();
+
+        $cuponsHist = DB::table('cupoms')
+            ->where('idBeneficiado', '=', "$id")
+            ->where('dataDisp', '<', "$hoje")
+            ->where('status', '=', 'inativo')
+            ->get();
+        if($cuponsPrev || $cuponsHist){
+            return view('beneficiado.show', compact('beneficiado', 'cuponsPrev', 'cuponsHist'));
         }
         
         return view('beneficiado.show', compact('beneficiado'));
