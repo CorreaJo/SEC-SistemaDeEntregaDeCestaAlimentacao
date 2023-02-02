@@ -11,65 +11,64 @@
 <body>
     <x-cabecalho />
     @unless (Auth::user()->unidade === "compras" || Auth::user()->unidade === "entrega")
-    <div class="flex mt-4 p-4 w-full justify-between">
-        <div class="flex">
-            <form class="mr-2" action="{{route('beneficiado.delete', $beneficiado->id)}}" method="POST">
-                @method('DELETE')
-                @csrf
-                <button class="flex items-center border rounded p-2 hover:bg-red-700 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/lixeira.png')}}" alt="">Deletar</button>
-            </form>
-            <a href="{{route('beneficiado.edit', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/refrescar.png')}}" alt="">Editar</a>
-        </div>
-        @if (Auth::user()->perfil === 'Coordenador' || Auth::user()->perfil === 'admin')
-            <div>
-                <a href="{{route('cupom.deleteAll', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-red-700 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/lixeira.png')}}" alt="">Excluir Cestas Provisionadas</a>
+        <div class="flex mt-4 p-4 w-full justify-between">
+            <div class="flex">
+                <form class="mr-2" action="{{route('beneficiado.delete', $beneficiado->id)}}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <button class="flex items-center border rounded p-2 hover:bg-red-700 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/lixeira.png')}}" alt="">Deletar</button>
+                </form>
+                <a href="{{route('beneficiado.edit', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/refrescar.png')}}" alt="">Editar</a>
             </div>
-        @endif
-    </div>
+            @if (Auth::user()->perfil === 'Coordenador' || Auth::user()->perfil === 'admin')
+                <div>
+                    <a href="{{route('cupom.deleteAll', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-red-700 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/lixeira.png')}}" alt="">Excluir Cestas Provisionadas</a>
+                </div>
+            @endif
+        </div>
     @endunless
-    
 
     <div class="p-5 w-[70vw] m-auto rounded-lg shadow-md shadow-gray-700 mt-3 bg-[#B1D4E0]">
         <h1 class="text-center font-bold text-2xl">{{$beneficiado->nome}}</h1>
         <div class="flex justify-around w-full mt-5">
             @if (Auth::user()->unidade === "entrega")
-            <div>
-                <x-label for="cpf" :value="__('CPF')" />
-                <input class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->cpf}}">
+                <div>
+                    <x-label for="cpf" :value="__('CPF')" />
+                    <input class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->cpf}}">
 
-                <x-label for="rg" :value="__('RG')" />
-                <input class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->rg}}">
+                    <x-label for="rg" :value="__('RG')" />
+                    <input class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->rg}}">
 
-                
-            </div>
-            <div>
-                <x-label for="rg" :value="__('Unidade')" />
-                <input class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->unidade}}">
-            </div>
+                    
+                </div>
+                <div>
+                    <x-label for="rg" :value="__('Unidade')" />
+                    <input class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->unidade}}">
+                </div>
             @else
-            <div>
-            <div class="w-1/2 mr-2">
-                <x-label for="cpf" :value="__('CPF')" />
-                <input class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->cpf}}">
+                <div class="w-1/2 mr-2">
+                    <x-label for="cpf" :value="__('CPF')" />
+                    <input class="rounded-md w-3/4 shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->cpf}}">
 
-                <x-label for="rg" :value="__('RG')" />
-                <input class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->rg}}">
-
-            </div>
-            <div class="w-1/2">
-                <x-label for="rg" :value="__('Unidade')" />
-                <input class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->unidade}}">
-                
-                <x-label for="quant" :value="__('Quantidade de Membros')" />
-                <input class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->quantMembros}}">
-            </div>
+                    <x-label for="rg" :value="__('RG')" />
+                    <input class="rounded-md w-3/4 shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->rg}}">
+                </div>
+                    <div class="w-1/2">
+                        <x-label for="rg" :value="__('Unidade')" />
+                        <input class="rounded-md w-3/4 shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->unidade}}">
+                        
+                        <x-label for="quant" :value="__('Quantidade de Membros')" />
+                        <input class="rounded-md w-3/4 shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->quantMembros}}">
+                    </div>
+                </div>
+                <div class="w-full">
+                        <x-label for="endereco" :value="__('Endereço')" />
+                        <input class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->endereco}}">
+                    </div>
             @endif
         </div>
-        <div>
-            <x-label for="endereco" :value="__('Endereço')" />
-            <input class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->endereco}}">
-        </div>
     </div>
+
     @unless (Auth::user()->unidade === "compras" || Auth::user()->unidade === "entrega")
     <div class="m-5 mt-8">
         <a href="{{route('cupom.create', $beneficiado->id)}}" class="p-4 bg-[#145DA0] rounded-md text-white font-semibold hover:bg-[#1f7fda] transition duration-0 hover:duration-500 ">

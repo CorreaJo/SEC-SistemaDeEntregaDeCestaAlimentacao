@@ -11,6 +11,9 @@
 
             <input class="radio" type="radio" value="cpf" id="cpf" name="tipo_pesquisa">
             <label for="cpf">CPF</label>
+
+            <input class="radio" type="radio" value="endereco" id="endereco" name="tipo_pesquisa">
+            <label for="cpf">Endereço</label>
         </div>
     </form>
 
