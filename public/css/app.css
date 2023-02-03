@@ -797,8 +797,14 @@ select {
 .w-\[70vw\] {
   width: 70vw;
 }
-.w-1\/2 {
-  width: 50%;
+.w-\[40\%\] {
+  width: 40%;
+}
+.w-\[45\%\] {
+  width: 45%;
+}
+.w-\[95\%\] {
+  width: 95%;
 }
 .w-3\/4 {
   width: 75%;
@@ -814,6 +820,9 @@ select {
 }
 .w-\[300px\] {
   width: 300px;
+}
+.w-1\/2 {
+  width: 50%;
 }
 .w-\[50vw\] {
   width: 50vw;
@@ -1285,6 +1294,10 @@ select {
 }
 .shadow-gray-700 {
   --tw-shadow-color: #374151;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+.shadow-black {
+  --tw-shadow-color: #000;
   --tw-shadow: var(--tw-shadow-colored);
 }
 .ring-1 {

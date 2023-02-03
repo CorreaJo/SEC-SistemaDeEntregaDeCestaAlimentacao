@@ -70,9 +70,17 @@ class CupomController extends Controller
     }
 
     public function deleteAll($idBeneficiado){
-        $cupons = Cupom::where('idBeneficiado', '=', "$idBeneficiado");
+        $hoje = Carbon::today();
+        $hoje->format('Y-m-d');
+        $cupons = Cupom::where('idBeneficiado', '=', "$idBeneficiado")
+                ->where('dataDisp', '>=', "$hoje")
+                ->orWhere('status', '=', 'ativo')
+                ->get();
         if($cupons){
-            $cupons->delete();
+            foreach($cupons as $cupom){
+                $cupom->delete($cupom->id);
+            }
+            
             return redirect()->route('beneficiado.show', $idBeneficiado);
         }
         return redirect()->route('beneficiado.show', $idBeneficiado);
