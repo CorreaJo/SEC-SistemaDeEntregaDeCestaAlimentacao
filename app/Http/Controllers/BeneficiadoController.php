@@ -62,14 +62,14 @@ class BeneficiadoController extends Controller
         $hoje->format('Y-m-d');
         $cuponsPrev = DB::table('cupoms')
             ->where('idBeneficiado', '=', "$id")
-            ->where('dataDisp', '>=', "$hoje")
+            ->where('dataDisp', '>', "$hoje")
             ->orWhere('status', '=', 'ativo')
             ->get();
 
         $cuponsHist = DB::table('cupoms')
             ->where('idBeneficiado', '=', "$id")
             ->where('dataDisp', '<', "$hoje")
-            ->where('status', '=', 'inativo')
+            ->orWhere('status', '=', 'inativo')
             ->get();
         if($cuponsPrev || $cuponsHist){
             return view('beneficiado.show', compact('beneficiado', 'cuponsPrev', 'cuponsHist'));

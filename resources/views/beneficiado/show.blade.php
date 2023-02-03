@@ -40,50 +40,53 @@
         <h1 class="text-center font-bold text-2xl">{{$beneficiado->nome}}</h1>
         <div class="flex justify-center mt-5">
             @if (Auth::user()->unidade === "entrega")
-            <div>
+            <div class="w-[45%] m-auto">
                 <x-label for="cpf" :value="__('CPF')" />
                 <input
-                    class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
+                    class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
                     type="text" disabled value="{{$beneficiado->cpf}}">
 
                 <x-label for="rg" :value="__('RG')" />
                 <input
-                    class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
-                    type="text" disabled value="{{$beneficiado->rg}}">
-
-
-            </div>
-            <div>
-                <x-label for="rg" :value="__('Unidade')" />
-                <input
-                    class="rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
-                    type="text" disabled value="{{$beneficiado->unidade}}">
-            </div>
-            @else
-            <div class="w-1/2 mr-2">
-                <x-label for="cpf" :value="__('CPF')" />
-                <input
-                    class="rounded-md w-3/4 shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
-                    type="text" disabled value="{{$beneficiado->cpf}}">
-
-                <x-label for="rg" :value="__('RG')" />
-                <input
-                    class="rounded-md w-3/4 shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
+                    class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
                     type="text" disabled value="{{$beneficiado->rg}}">
             </div>
-            <div class="w-1/2">
+            <div class="w-[45%] m-auto">
                 <x-label for="rg" :value="__('Unidade')" />
                 <input
-                    class="rounded-md w-3/4 shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
+                    class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
                     type="text" disabled value="{{$beneficiado->unidade}}">
 
                 <x-label for="quant" :value="__('Quantidade de Membros')" />
                 <input
-                    class="rounded-md w-3/4 shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
+                    class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
+                    type="text" disabled value="{{$beneficiado->quantMembros}}">
+            </div>
+            @else
+            <div class="w-[45%] m-auto">
+                <x-label for="cpf" :value="__('CPF')" />
+                <input
+                    class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
+                    type="text" disabled value="{{$beneficiado->cpf}}">
+
+                <x-label for="rg" :value="__('RG')" />
+                <input
+                    class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
+                    type="text" disabled value="{{$beneficiado->rg}}">
+            </div>
+            <div class="w-[45%] m-auto">
+                <x-label for="rg" :value="__('Unidade')" />
+                <input
+                    class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
+                    type="text" disabled value="{{$beneficiado->unidade}}">
+
+                <x-label for="quant" :value="__('Quantidade de Membros')" />
+                <input
+                    class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
                     type="text" disabled value="{{$beneficiado->quantMembros}}">
             </div>
         </div>
-        <div class="w-full">
+        <div class="w-[95%] m-auto">
             <x-label for="endereco" :value="__('Endereço')" />
             <input
                 class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50"
