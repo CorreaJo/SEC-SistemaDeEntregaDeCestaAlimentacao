@@ -13,7 +13,7 @@ class UserController extends Controller
 {
     public function index() {
         $hoje = Carbon::today();
-        $cuponsAtivo = Cupom::where('dataDisp', '=', $hoje)->where('status', '=', 'inativo')->get();
+        $cuponsAtivo = Cupom::where('dataDisp', '=', $hoje)->where('status', '=', 'inativo')->where('dataRetirada', '=', NULL)->get();
         foreach($cuponsAtivo as $cupom){
             $cupom->update(['status' => 'ativo']);
         }

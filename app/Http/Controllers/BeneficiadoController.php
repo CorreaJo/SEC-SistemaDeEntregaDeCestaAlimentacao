@@ -110,4 +110,23 @@ class BeneficiadoController extends Controller
         
         return view('beneficiado.show', compact('beneficiado'));
     }
+
+    public function observacao($id){
+        $beneficiados = Beneficiado::where('id', '=', "$id")->get();
+        foreach($beneficiados as $beneficiado){
+            if($beneficiado->observacao){
+                return view('beneficiado.observacao', compact('id', 'beneficiado'));
+            }
+        }
+        return view('beneficiado.observacao', compact('id'));
+    }
+
+    public function updateObservacao(Request $request, $id){
+        $request->validate([
+            'obs' => ['required', 'string']
+        ]);
+
+        $beneficiado = Beneficiado::where('id', '=', "$id")->update(['observacao' => $request->obs]);
+        return redirect()->route('beneficiado.show', $id);
+    }
 }

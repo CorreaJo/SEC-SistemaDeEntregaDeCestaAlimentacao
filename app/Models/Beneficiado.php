@@ -15,6 +15,7 @@ class Beneficiado extends Model
         'rg',
         'unidade',
         'endereco',
-        'quantMembros'
+        'quantMembros',
+        'observacao'
     ];
 }
