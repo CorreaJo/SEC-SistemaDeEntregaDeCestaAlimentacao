@@ -14,12 +14,12 @@
                 @if(isset($beneficiado->observacao))
                     <div>
                         <x-label for="obs" :value="__('Observações')" />
-                        <textarea name="obs" id="obs" cols="30" rows="10" class="block mt-1 w-full" required autofocus >{{ $beneficiado->observacao }}</textarea>
+                        <textarea class="w-full rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" name="obs" id="obs" cols="30" rows="10" class="block mt-1 w-full" required autofocus >{{ $beneficiado->observacao }}</textarea>
                     </div>
                 @else
                     <div>
                         <x-label for="obs" :value="__('Observações')" />
-                        <textarea name="obs" id="obs" cols="30" rows="10" class="block mt-1 w-full" required autofocus ></textarea>
+                        <textarea class="w-full rounded-md shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" name="obs" id="obs" cols="30" rows="10" class="block mt-1 w-full" required autofocus ></textarea>
                     </div>
                 @endif
     

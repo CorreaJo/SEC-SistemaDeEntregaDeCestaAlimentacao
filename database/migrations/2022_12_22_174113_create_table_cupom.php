@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('dataLimite');  
             $table->string('status');
             $table->text('observacao')->nullable();
+            $table->string('criador');
             $table->foreignId('idBeneficiado')->references('id')->on('beneficiados')->onDelete('cascade');
             $table->timestamps();
         });

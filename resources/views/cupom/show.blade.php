@@ -39,6 +39,7 @@
         </div>
         <h1 class="text-center font-bold text-2xl">{{$beneficiado->nome}}</h1>
         <h3 class="mt-4">Data: {{\Carbon\Carbon::parse($cupom->dataDisp)->format('d/m/Y')}}</h3>
+        <h3 class="text-center">Gerado Por: {{$cupom->criador}}</h3>
     </div>
 
     @if($cupom->observacao)
