@@ -6,12 +6,24 @@ use App\Models\User;
 use App\Models\Beneficiado;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+//use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function index() {
+    /*public function paginate($items, $perPage = 2, $page = null, $options = []){
+        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
+        $total = count($items);
+        $currentPage = $page;
+        $offset = ($currentPage * $perPage) - $perPage;
+        $itemsToShow = array_slice($items, $offset, $perPage);
+        return new LengthAwarePaginator($itemsToShow, $total, $perPage);
+    }*/
+
+    public function index(Request $request) {
         $hoje = Carbon::today();
         $cuponsAtivo = Cupom::where('dataDisp', '=', $hoje)->where('status', '=', 'inativo')->where('dataRetirada', '=', NULL)->get();
         foreach($cuponsAtivo as $cupom){
@@ -46,11 +58,34 @@ class UserController extends Controller
 
             $cupons = DB::table('cupoms')
                 ->where('status', '=', 'ativo')
-                ->paginate(20);
+                ->get();
 
-                return view('cupom.index', compact('cupons'));
+            $dados = array();
+            foreach($cupons as $cupom){
+                $beneficiados = Beneficiado::where('id', '=', "$cupom->idBeneficiado")->get();
+                foreach($beneficiados as $beneficiado){
+                    $infos = ['id' => $cupom->id, 
+                            'idBeneficiado' => $cupom->idBeneficiado, 
+                            'dataDisp' => $cupom->dataDisp, 
+                            'dataLimite' => $cupom->dataLimite,
+                            'nomeBeneficiado' => $beneficiado->nome, 
+                            'cpfBeneficiado' => $beneficiado->cpf];
+                    array_push($dados, $infos);
+                }
+            }
+            $currentPage = null;
+            $currentPage = $currentPage ?: (Paginator::resolveCurrentPage() ?: 1);
+            $col = collect($dados);
+            $perPage = 20;
+            $currentPageItems = $col->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+            $items = new Paginator($currentPageItems, count($col), $perPage);
+            $items->setPath($request->url());
+            $items->appends($request->all());
+
+
+
+            return view('cupom.index', compact('items'));
         }
-
         return view('index');
     }
 
