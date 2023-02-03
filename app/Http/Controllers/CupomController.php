@@ -6,6 +6,7 @@ use App\Models\Beneficiado;
 use App\Models\Cupom;
 use Carbon\Carbon;
 use DateTimeZone;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -45,6 +46,7 @@ class CupomController extends Controller
                     'dataLimite' => $dataLimite,
                     'status' => $status,
                     'observacao' => $obs,
+                    'criador' => Auth::user()->name,
                     'idBeneficiado' => $idBeneficiado
                 ]);
             } else {

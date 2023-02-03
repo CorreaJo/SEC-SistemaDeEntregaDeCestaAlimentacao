@@ -15,6 +15,7 @@ class Cupom extends Model
         'dataLimite',
         'status',
         'observacao',
+        'criador',
         'idBeneficiado'
     ];
 }

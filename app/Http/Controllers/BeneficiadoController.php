@@ -129,4 +129,12 @@ class BeneficiadoController extends Controller
         $beneficiado = Beneficiado::where('id', '=', "$id")->update(['observacao' => $request->obs]);
         return redirect()->route('beneficiado.show', $id);
     }
+
+    public function deleteObservacao($id){
+        if(!$beneficiado = Beneficiado::find($id))
+            return redirect()->back();
+
+        $beneficiado = Beneficiado::where('id', '=', "$id")->update(['observacao' => null]);
+        return redirect()->route('beneficiado.show', $id);
+    }
 }
