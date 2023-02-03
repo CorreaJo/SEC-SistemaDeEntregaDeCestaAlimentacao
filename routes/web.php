@@ -50,6 +50,8 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/beneficiado/delete/{id}', [BeneficiadoController::class, 'delete'])->name('beneficiado.delete');
     Route::get('/beneficiado/edit/{id}', [BeneficiadoController::class, 'edit'])->name('beneficiado.edit');
     Route::post('/beneficiado/edit/{id}', [BeneficiadoController::class, 'update'])->name(('beneficiado.update'));
+    Route::get('/beneficiado/addObservacao/{id}', [BeneficiadoController::class, 'observacao'])->name('beneficiado.observacao');
+    Route::post('/beneficiado/updateObservacao/{id}', [BeneficiadoController::class, 'updateObservacao'])->name('beneficiado.updateObservacao');
 
 });
 
