@@ -22,33 +22,41 @@
             <thead class="bg-gray-800">
                 <tr>
                     <th scope="col" class="text-sm font-medium text-white px-6 py-4">Código</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">Nome</th>
+                    <th scope="col" class="text-sm font-medium text-white px-6 py-4">CPF</th>
                     <th scope="col" class="text-sm font-medium text-white px-6 py-4">Data</th>
                     <th scope="col" class="text-sm font-medium text-white px-6 py-4">Data de Expiração</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($cupons as $cupom)
-               
-                <tr class="border-b cursor-pointer hover:bg-gray-500  transition duration-0 hover:duration-500" onclick="window.location='{{route('cupom.show', array('id'=> $cupom->idBeneficiado, 'idCupom'=> $cupom->id))}}'">
-                    <td class="text-lg text-gray-900 font-semibold px-6 py-4 whitespace-nowrap">
-                    @php
-                        $pr_id = $cupom->id;
-                        $pr_id = sprintf("%06d", $pr_id);
-                    @endphp
-                    <h2>{{$pr_id}}</h2>
-                    </td>
-                    <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
-                        {{\Carbon\Carbon::parse($cupom->dataDisp)->format('d/m/Y')}}
-                    </td>
-                    <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
-                        {{\Carbon\Carbon::parse($cupom->dataLimite)->format('d/m/Y')}}
-                    </td>
-                </tr>
+                @foreach ($items as $dado)
+
+                    <tr class="border-b cursor-pointer hover:bg-gray-500  transition duration-0 hover:duration-500" onclick="window.location='{{route('cupom.show', array('id'=> $dado['idBeneficiado'], 'idCupom'=> $dado['id']))}}'">
+                        <td class="text-lg text-gray-900 font-semibold px-6 py-4 whitespace-nowrap">
+                        @php
+                            $pr_id = $dado['id'];
+                            $pr_id = sprintf("%06d", $pr_id);
+                        @endphp
+                        <h2>{{$pr_id}}</h2>
+                        </td>
+                        <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
+                            {{ $dado['nomeBeneficiado'] }}
+                        </td>
+                        <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
+                            {{ $dado['cpfBeneficiado'] }}
+                        </td>
+                        <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
+                            {{\Carbon\Carbon::parse($dado['dataDisp'])->format('d/m/Y')}}
+                        </td>
+                        <td class="text-lg text-gray-900 px-6 py-4 whitespace-nowrap">
+                            {{\Carbon\Carbon::parse($dado['dataLimite'])->format('d/m/Y')}}
+                        </td>
+                    </tr>
         
                 @endforeach
             </tbody>
         </table>
-        {{$cupons->withQueryString()->links()}}
+        {!! $items->links() !!}
     </div>
     <x-rodape />
 </body>
