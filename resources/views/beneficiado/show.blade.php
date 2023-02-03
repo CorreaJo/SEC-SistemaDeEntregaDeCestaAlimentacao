@@ -18,7 +18,13 @@
                     @csrf
                     <button class="flex items-center border rounded p-2 hover:bg-red-700 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/lixeira.png')}}" alt="">Deletar</button>
                 </form>
-                <a href="{{route('beneficiado.edit', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500"><img src="{{asset('images/refrescar.png')}}" alt="">Editar</a>
+
+                <a href="{{route('beneficiado.edit', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500 mr-2"><img src="{{asset('images/refrescar.png')}}" alt="">Editar</a>
+                @if($beneficiado->observacao)
+                    <a href="{{route('beneficiado.observacao', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500">Alterar observação</a>
+                @else
+                    <a href="{{route('beneficiado.observacao', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500">Adicionar observação</a>
+                @endif
             </div>
             @if (Auth::user()->perfil === 'Coordenador' || Auth::user()->perfil === 'admin')
                 <div>
@@ -64,7 +70,13 @@
                 <div class="w-full">
                         <x-label for="endereco" :value="__('Endereço')" />
                         <input class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50" type="text" disabled value="{{$beneficiado->endereco}}">
-                    </div>
+                </div>
+                @if($beneficiado->observacao)
+                <div class="w-full">
+                        <x-label class="font-bold" for="observacao" :value="__('Observações')" />
+                        <textarea class="rounded-md w-full shadow-sm border-gray-300 focus:border-sky-400 focus:ring focus:ring-sky-50 focus:ring-opacity-50 bg-red-500" disabled>{{$beneficiado->observacao}}</textarea>
+                </div>
+                @endif
             @endif
         </div>
     </div>

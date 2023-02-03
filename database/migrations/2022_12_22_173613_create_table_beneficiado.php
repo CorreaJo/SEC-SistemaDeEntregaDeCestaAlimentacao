@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('endereco');
             $table->integer('quantMembros');
             $table->string('unidade');
+            $table->text('observacao')->nullable();
             $table->timestamps();
         });
     }
