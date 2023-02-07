@@ -8,6 +8,8 @@
     <title>Detalhes de {{$beneficiado->nome}}</title>
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script src="{{asset('js/app.js')}}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
@@ -29,11 +31,20 @@
                 @if($beneficiado->observacao)
                     <a href="{{route('beneficiado.observacao', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500 mr-2">Alterar observação</a>
 
-                    <a href="{{route('beneficiado.deleteObservacao', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500"><img
+                    <a href="{{route('beneficiado.deleteObservacao', $beneficiado->id)}}" class="flex mr-2 items-center border rounded p-2 hover:bg-red-700 hover:text-white transition duration-0 hover:duration-500"><img
                         src="{{asset('images/lixeira.png')}}" alt="">Excluir observação</a>
                 @else
-                    <a href="{{route('beneficiado.observacao', $beneficiado->id)}}" class="flex items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500">Adicionar observação</a>
+                    <a href="{{route('beneficiado.observacao', $beneficiado->id)}}" class="flex items-center mr-2 border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500">Adicionar observação</a>
                 @endif
+
+                @if ($beneficiado->unidade === Auth::user()->unidade)
+                <a href="{{route('beneficiado.transferir', $beneficiado->id)}}"
+                    class="hidden"><ion-icon name="swap-horizontal-outline"></ion-icon>Transferir para {{Auth::user()->unidade}}</a>
+                @else
+                <a href="{{route('beneficiado.transferir', $beneficiado->id)}}"
+                    class="flex mr-2 items-center border rounded p-2 hover:bg-cyan-800 hover:text-white transition duration-0 hover:duration-500"><ion-icon name="swap-horizontal-outline"></ion-icon>Transferir para {{Auth::user()->unidade}}</a>
+                @endif
+                
             </div>
             @if (Auth::user()->perfil === 'Coordenador' || Auth::user()->perfil === 'admin')
                 <div>

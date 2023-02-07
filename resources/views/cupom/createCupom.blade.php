@@ -14,7 +14,7 @@
 <body>
     <x-guest-layout>
         <x-auth-card>
-            <a class="flex items-center pb-3" href="{{route('beneficiado.show', $beneficiado->id)}}">
+            <a class="flex items-center pb-3" href="{{url()->previous()}}">
                 <img src="{{asset('images/botao-voltar.png')}}" alt="">
                 Voltar
             </a>
