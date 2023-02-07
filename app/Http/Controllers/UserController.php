@@ -11,17 +11,10 @@ use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\FuncCall;
 
 class UserController extends Controller
 {
-    /*public function paginate($items, $perPage = 2, $page = null, $options = []){
-        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-        $total = count($items);
-        $currentPage = $page;
-        $offset = ($currentPage * $perPage) - $perPage;
-        $itemsToShow = array_slice($items, $offset, $perPage);
-        return new LengthAwarePaginator($itemsToShow, $total, $perPage);
-    }*/
 
     public function index(Request $request) {
         $hoje = Carbon::today();

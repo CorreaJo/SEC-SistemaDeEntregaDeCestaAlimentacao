@@ -6,6 +6,7 @@ use App\Models\Beneficiado;
 use App\Models\Cupom;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpKernel\Event\ViewEvent;
 
@@ -135,6 +136,14 @@ class BeneficiadoController extends Controller
             return redirect()->back();
 
         $beneficiado = Beneficiado::where('id', '=', "$id")->update(['observacao' => null]);
+        return redirect()->route('beneficiado.show', $id);
+    }
+
+    public function transferir($id){
+        if(!$beneficiado = Beneficiado::find($id))
+            return redirect()->back();
+        
+        $beneficiado = Beneficiado::where('id', '=', "$id")->update(['unidade' => Auth::user()->unidade]);
         return redirect()->route('beneficiado.show', $id);
     }
 }

@@ -44,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/beneficiado/addObservacao/{id}', [BeneficiadoController::class, 'observacao'])->name('beneficiado.observacao');
     Route::post('/beneficiado/updateObservacao/{id}', [BeneficiadoController::class, 'updateObservacao'])->name('beneficiado.updateObservacao');
     Route::get('/beneficiado/deleteObservacao/{id}', [BeneficiadoController::class, 'deleteObservacao'])->name('beneficiado.deleteObservacao');
+    Route::get('/beneficiado/transferirUnidade/{id}', [BeneficiadoController::class, 'transferir'])->name('beneficiado.transferir');
 
 
     Route::get('/cupom/{id}/create', [CupomController::class, 'create'])->name('cupom.create');
