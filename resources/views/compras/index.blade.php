@@ -11,8 +11,8 @@
 <body>
     <x-cabecalho />
         <h1 class="text-center text-2xl font-bold m-5">Consultar Relatórios</h1>
-        <div class="flex justify-around flex-wrap">
-            <div class="w-[50vw]">
+        <div class="flex  justify-around flex-wrap">
+            <div class="w-[48vw]">
                 <table class="m-auto w-3/4 bg-cyan-800 p-4 rounded-xl text-white font-medium">
                     <thead class="border-b border-black ">
                         <tr>
@@ -40,7 +40,7 @@
                     </tfoot>
                 </table>
             </div>
-            <div class="w-[50vw]">
+            <div class="w-[48vw]">
                 <table class="m-auto w-3/4 bg-cyan-800 p-4 rounded-xl text-white font-medium">
                     <thead class="border-b border-black ">
                         <tr>
@@ -69,7 +69,7 @@
                 </table>
             </div>
 
-            <div class="w-[50vw] mt-8">
+            <div class="w-[48vw] mt-8">
                 <table class="m-auto w-3/4  bg-cyan-800 p-4 rounded-xl text-white font-medium">
                     <thead class="border-b border-black ">
                         <tr>
@@ -87,7 +87,7 @@
                 </table>
             </div>
 
-            <div class="w-[50vw] mt-8">
+            <div class="w-[48vw] mt-8">
                 <table class="m-auto w-3/4 bg-cyan-800 p-4 rounded-xl text-white font-medium">
                     <thead class="border-b border-black ">
                         <tr>

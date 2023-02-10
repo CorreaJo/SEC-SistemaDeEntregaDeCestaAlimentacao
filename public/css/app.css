@@ -830,6 +830,9 @@ select {
 .w-\[40px\] {
   width: 40px;
 }
+.w-\[48vw\] {
+  width: 48vw;
+}
 .w-48 {
   width: 12rem;
 }
@@ -999,12 +1002,12 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
-.border-transparent {
-  border-color: transparent;
-}
 .border-black {
   --tw-border-opacity: 1;
   border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+.border-transparent {
+  border-color: transparent;
 }
 .border-indigo-400 {
   --tw-border-opacity: 1;

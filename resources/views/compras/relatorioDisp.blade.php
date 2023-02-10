@@ -12,7 +12,7 @@
     <x-cabecalho />
         <h1 class="text-center text-2xl font-bold m-5">Relatório de Cestas Disponibilizadas</h1>
         <div class="flex justify-around flex-wrap">
-            <div class="w-[50vw]">
+            <div class="w-[48vw]">
                 <table class="m-auto w-3/4 bg-cyan-800 p-4 rounded-xl text-white font-medium">
                     <thead class="border-b border-black ">
                         <tr>
@@ -31,7 +31,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="w-[50vw]">
+            <div class="w-[48vw]">
                 <table class="m-auto w-3/4 bg-cyan-800 p-4 rounded-xl text-white font-medium">
                     <thead class="border-b border-black ">
                         <tr>
