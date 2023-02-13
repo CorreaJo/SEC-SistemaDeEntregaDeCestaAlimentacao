@@ -275,16 +275,6 @@
                             $pr_id = sprintf("%06d", $pr_id);
                             @endphp
                             <h2>{{$pr_id}}</h2>
-                            @unless (Auth::user()->unidade === "compras" || Auth::user()->unidade === "entrega")
-                            <form class="mr-2"
-                                action="{{route('cupom.delete', array('id'=>$cupomHist->id, 'idBeneficiado'=>$cupomHIst->idBeneficiado))}}"
-                                method="POST">
-                                @method('DELETE')
-                                @csrf
-                                <button class="rounded p-2 hover:bg-red-700 transition duration-0 hover:duration-500"><img
-                                        src="{{asset('images/lixeira.png')}}" alt=""></button>
-                            </form>
-                            @endunless
                             @if (Auth::user()->unidade === "entrega")
                             <h2>{{$beneficiado->cpf}}</h2>
                             @endif
@@ -303,17 +293,6 @@
                         $pr_id = sprintf("%06d", $pr_id);
                         @endphp
                         <h2>{{$pr_id}}</h2>
-                        @unless (Auth::user()->unidade === "compras" || Auth::user()->unidade === "entrega")
-                        <form class="mr-2"
-                            action="{{route('cupom.delete', array('id'=>$cupomHist->id, 'idBeneficiado'=>$cupomHist->idBeneficiado))}}"
-                            method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="rounded p-2 hover:bg-red-700 transition duration-0 hover:duration-500"><img
-                                    src="{{asset('images/lixeira.png')}}" alt=""></button>
-                        </form>
-                        @endunless
-    
                         @if (Auth::user()->unidade === "entrega")
                         <h2>{{$beneficiado->cpf}}</h2>
                         @endif
@@ -333,16 +312,6 @@
                         $pr_id = sprintf("%06d", $pr_id);
                         @endphp
                         <h2>{{$pr_id}}</h2>
-                        @unless (Auth::user()->unidade === "compras" || Auth::user()->unidade === "entrega")
-                        <form class="mr-2"
-                            action="{{route('cupom.delete', array('id'=>$cupomHist->id, 'idBeneficiado'=>$cupomHist->idBeneficiado))}}"
-                            method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="rounded p-2 hover:bg-red-700 transition duration-0 hover:duration-500"><img
-                                    src="{{asset('images/lixeira.png')}}" alt=""></button>
-                        </form>
-                        @endunless
                         @if (Auth::user()->unidade === "entrega")
                         <h2>{{$beneficiado->cpf}}</h2>
                         @endif
@@ -360,17 +329,6 @@
                         $pr_id = sprintf("%06d", $pr_id);
                         @endphp
                         <h2>{{$pr_id}}</h2>
-                        @unless (Auth::user()->unidade === "compras" || Auth::user()->unidade === "entrega")
-                        <form class="mr-2"
-                            action="{{route('cupom.delete', array('id'=>$cupomHist->id, 'idBeneficiado'=>$cupomHist->idBeneficiado))}}"
-                            method="POST">
-                            @method('DELETE')
-                            @csrf
-                            <button class="rounded p-2 hover:bg-red-700 transition duration-0 hover:duration-500"><img
-                                    src="{{asset('images/lixeira.png')}}" alt=""></button>
-                        </form>
-                        @endunless
-    
                         @if (Auth::user()->unidade === "entrega")
                         <h2>{{$beneficiado->cpf}}</h2>
                         @endif

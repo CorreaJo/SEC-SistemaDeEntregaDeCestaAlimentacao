@@ -61,17 +61,25 @@ class BeneficiadoController extends Controller
 
         $hoje = Carbon::today();
         $hoje->format('Y-m-d');
-        $cuponsPrev = DB::table('cupoms')
-            ->where('idBeneficiado', '=', "$id")
-            ->where('dataDisp', '>', "$hoje")
-            ->orWhere('status', '=', 'ativo')
-            ->get();
+        
+        $cuponsPrev = Cupom::where(function($cuponsPrev2) use ($id, $hoje){
+            $cuponsPrev2->where(function($cuponsPrev2) use ($id, $hoje){
+                 $cuponsPrev2->where('idBeneficiado', '=', "$id")->where('dataDisp', '>', "$hoje");
+             })
+            ->orWhere(function($cuponsPrev2) use ($id){
+                 $cuponsPrev2->where('idBeneficiado', '=', "$id")->where('status', '=', 'ativo');
+             });
+         })->get();
 
-        $cuponsHist = DB::table('cupoms')
-            ->where('idBeneficiado', '=', "$id")
-            ->where('dataDisp', '<', "$hoje")
-            ->orWhere('status', '=', 'inativo')
-            ->get();
+        $cuponsHist = Cupom::where(function($cuponsHist2) use ($id, $hoje){
+                $cuponsHist2->where(function($cuponsHist2) use ($id, $hoje){
+                     $cuponsHist2->where('idBeneficiado', '=', "$id")->where('dataLimite', '<=', "$hoje");
+                 })
+                ->orWhere(function($cuponsHist2) use ($id){
+                     $cuponsHist2->where('idBeneficiado', '=', "$id")->where('dataRetirada', '!=', NULL);
+                 });
+             })->get();
+
         if($cuponsPrev || $cuponsHist){
             return view('beneficiado.show', compact('beneficiado', 'cuponsPrev', 'cuponsHist'));
         }
