@@ -6,6 +6,8 @@ use App\Models\Beneficiado;
 use App\Models\Cupom;
 use Carbon\Carbon;
 use DateTimeZone;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator as Paginator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
@@ -120,10 +122,32 @@ class CupomController extends Controller
         $dataLimite->addDays(3);
 
         $cupons = DB::table('cupoms')
-            ->where('status', '=', 'ativo')
-            ->paginate(20);
+                ->where('status', '=', 'ativo')
+                ->get();
 
-        return view('cupom.index', compact('cupons'));
+            $dados = array();
+            foreach($cupons as $cupom){
+                $beneficiados = Beneficiado::where('id', '=', "$cupom->idBeneficiado")->get();
+                foreach($beneficiados as $beneficiado){
+                    $infos = ['id' => $cupom->id, 
+                            'idBeneficiado' => $cupom->idBeneficiado, 
+                            'dataDisp' => $cupom->dataDisp, 
+                            'dataLimite' => $cupom->dataLimite,
+                            'nomeBeneficiado' => $beneficiado->nome, 
+                            'cpfBeneficiado' => $beneficiado->cpf];
+                    array_push($dados, $infos);
+                }
+            }
+            $currentPage = null;
+            $currentPage = $currentPage ?: (Paginator::resolveCurrentPage() ?: 1);
+            $col = collect($dados);
+            $perPage = 20;
+            $currentPageItems = $col->slice(($currentPage * $perPage) - $perPage, $perPage)->all();
+            $items = new Paginator($currentPageItems, count($col), $perPage);
+            $items->setPath($request->url());
+            $items->appends($request->all());
+
+            return view('cupom.index', compact('items'));
     }
 
 
