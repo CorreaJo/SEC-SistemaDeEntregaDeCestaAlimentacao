@@ -20,12 +20,18 @@ class CupomController extends Controller
     }
 
     public function store(Request $request){
-
-        foreach ($request->data as $chave=>$valor){
-            
+        foreach($request->data as $chave=>$valor){
             $dataDisp = $valor;
             $hoje = Carbon::today();
 
+            if($dataDisp < $hoje){
+                return redirect()->back()->withErrors("Não é possível cadastrar um cupom com data inferior a hoje.");
+            }
+        }
+
+        foreach ($request->data as $chave=>$valor){
+            $dataDisp = $valor;
+            $hoje = Carbon::today();
             $dataLimite = Carbon::createFromDate($dataDisp, 'America/Sao_Paulo');
             $dataLimite->addDays(3);
 
