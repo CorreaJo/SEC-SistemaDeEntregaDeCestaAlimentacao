@@ -40,17 +40,20 @@ class BeneficiadoController extends Controller
     public function pesquisa(Request $request){
         if($request->tipo_pesquisa === 'nome'){
             $beneficiados = Beneficiado::where('nome','LIKE',"%{$request->pesquisa}%")->get();
-            return view('pesquisa', compact('beneficiados'));
+            $pesquisa = $request->pesquisa;
+            return view('pesquisa', compact('beneficiados', 'pesquisa'));
         }
 
         if($request->tipo_pesquisa === 'endereco'){
             $beneficiados = Beneficiado::where('endereco','LIKE',"%{$request->pesquisa}%")->get();
-            return view('pesquisa', compact('beneficiados'));
+            $pesquisa = $request->pesquisa;
+            return view('pesquisa', compact('beneficiados', 'pesquisa'));
         }  
         
         if ($request->tipo_pesquisa === 'cpf') {
             $beneficiados = Beneficiado::where('cpf','LIKE',"%{$request->pesquisa}%")->get();
-            return view('pesquisa', compact('beneficiados'));
+            $pesquisa = $request->pesquisa;
+            return view('pesquisa', compact('beneficiados', 'pesquisa'));
         }
     }
 

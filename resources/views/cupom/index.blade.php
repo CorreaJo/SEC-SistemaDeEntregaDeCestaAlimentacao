@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <script src="{{asset('js/app.js')}}"></script>
 </head>
-<body>
+<body x-data>
     <x-cabecalho />
     <div class="flex items-center justify-center h-[70vh] flex-row">
         <div>
