@@ -67,6 +67,10 @@ class CupomController extends Controller
         if(!$cupom = Cupom::find($id))
             return redirect()->route('beneficiado.show', $idBeneficiado);
 
+        $hoje = Carbon::today();
+        if($cupom->dataLimite <= $hoje || isset($cupom->dataRetirada)){
+            return redirect()->route('beneficiado.show', $idBeneficiado);
+        }
         $cupom->delete();
         return redirect()->route('beneficiado.show', $idBeneficiado);
     }
